@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{4da6f5f4-b3c7-4651-868d-a61fcfe7873f}</ProjectGuid>
+    <RootNamespace>NacyEngine</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\app\</OutDir>
+    <IntDir>$(SolutionDir)bin-internal\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\app\</OutDir>
+    <IntDir>$(SolutionDir)bin-internal\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NACY_PLATFORM_WINDOW;NACY_BUILD_DLL;MAPLE_BUILD_DLL_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>Sources;$(SolutionDir)NacyEngine\Dependencies\GLM\include;$(SolutionDir)NacyEngine\Dependencies\FreeType\include;$(SolutionDir)NacyEngine\Dependencies\GLFW\include;$(SolutionDir)NacyEngine\Dependencies\GLEW\include;</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)NacyEngine\Dependencies\FreeType\lib;$(SolutionDir)NacyEngine\Dependencies\GLFW\lib;$(SolutionDir)NacyEngine\Dependencies\GLEW\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;freetype.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NACY_PLATFORM_WINDOW;NACY_BUILD_DLL;MAPLE_BUILD_DLLNDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>Sources;$(SolutionDir)NacyEngine\Dependencies\GLM\include;$(SolutionDir)NacyEngine\Dependencies\FreeType\include;$(SolutionDir)NacyEngine\Dependencies\GLFW\include;$(SolutionDir)NacyEngine\Dependencies\GLEW\include;</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)NacyEngine\Dependencies\FreeType\lib;$(SolutionDir)NacyEngine\Dependencies\GLFW\lib;$(SolutionDir)NacyEngine\Dependencies\GLEW\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;freetype.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Sources\Nacy\Node\Component.cpp" />
+    <ClCompile Include="Sources\Nacy\Node\Node.cpp" />
+    <ClCompile Include="Sources\Nacy\Node\SpriteComponent.cpp" />
+    <ClCompile Include="Sources\Nacy\Render\Scene.cpp" />
+    <ClCompile Include="Sources\Nacy\Manager\Renderer.cpp" />
+    <ClCompile Include="Sources\Nacy\Event\KeyEvent.h" />
+    <ClCompile Include="Sources\Nacy\Render\SplashScreen.cpp" />
+    <ClCompile Include="Sources\pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Sources\Nacy\Render\Graphic.cpp" />
+    <ClCompile Include="Sources\Nacy\Core\GameWindow.cpp" />
+    <ClCompile Include="Sources\Nacy\Core\NApplication.cpp" />
+    <ClCompile Include="Sources\Nacy\Manager\ResourceManager.cpp" />
+    <ClCompile Include="Sources\Nacy\Manager\Shader.cpp" />
+    <ClCompile Include="Sources\Nacy\Manager\Shape.cpp" />
+    <ClCompile Include="Sources\Nacy\Manager\Sprite.cpp" />
+    <ClCompile Include="Sources\Nacy\Manager\Text.cpp" />
+    <ClCompile Include="Sources\Nacy\Manager\Texture.cpp" />
+    <ClCompile Include="Sources\Nacy\Render\Screen.cpp" />
+    <ClCompile Include="Sources\Nacy\Utilities.cpp" />
+    <ClCompile Include="Sources\Nacy\Math\Vector.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sources\NacyEngine.h" />
+    <ClInclude Include="Sources\Nacy\Node\Component.h" />
+    <ClInclude Include="Sources\Nacy\Node\Node.h" />
+    <ClInclude Include="Sources\Nacy\Node\SpriteComponent.h" />
+    <ClInclude Include="Sources\Nacy\Render\Scene.h" />
+    <ClInclude Include="Sources\Nacy\Manager\Renderer.h" />
+    <ClInclude Include="Sources\Nacy\Event\Events.h" />
+    <ClInclude Include="Sources\Nacy\Render\SplashScreen.h" />
+    <ClInclude Include="Sources\Nacy\Resources\Shaders.h" />
+    <ClInclude Include="Sources\pch.h" />
+    <ClInclude Include="Sources\Nacy\Render\Graphic.h" />
+    <ClInclude Include="Sources\Nacy\Core\Core.h" />
+    <ClInclude Include="Sources\Nacy\Core\GameWindow.h" />
+    <ClInclude Include="Sources\Nacy\Core\NApplication.h" />
+    <ClInclude Include="Sources\Nacy\Manager\ResourceManager.h" />
+    <ClInclude Include="Sources\Nacy\Manager\Shader.h" />
+    <ClInclude Include="Sources\Nacy\Manager\Shape.h" />
+    <ClInclude Include="Sources\Nacy\Manager\Sprite.h" />
+    <ClInclude Include="Sources\Nacy\Manager\stb_image.h" />
+    <ClInclude Include="Sources\Nacy\Manager\Text.h" />
+    <ClInclude Include="Sources\Nacy\Manager\Texture.h" />
+    <ClInclude Include="Sources\Nacy\Render\Screen.h" />
+    <ClInclude Include="Sources\Nacy\Utilities.h" />
+    <ClInclude Include="Sources\Nacy\Math\Vector.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="NacyRes\nacy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="NacyRes\Comici.ttf" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
