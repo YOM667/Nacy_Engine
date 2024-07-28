@@ -18,62 +18,59 @@
     <ClCompile Include="Sources\Nacy\Core\GameWindow.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Nacy\Core\NApplication.cpp">
+    <ClCompile Include="Sources\Nacy\Core\Application.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Nacy\Utilities.cpp">
+    <ClCompile Include="Sources\Nacy\Util\Utilities.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Nacy\Manager\ResourceManager.cpp">
+    <ClCompile Include="Sources\Nacy\Manager\Assets\ResourceManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Nacy\Manager\Shader.cpp">
+    <ClCompile Include="Sources\Nacy\Manager\Shader\Shader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Nacy\Manager\Shape.cpp">
+    <ClCompile Include="Sources\Nacy\Render\Shape.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Nacy\Manager\Sprite.cpp">
+    <ClCompile Include="Sources\Nacy\Render\Sprite.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Nacy\Manager\Text.cpp">
+    <ClCompile Include="Sources\Nacy\Render\Text.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Nacy\Manager\Texture.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Nacy\Render\Screen.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Nacy\Render\Graphic.cpp">
+    <ClCompile Include="Sources\Nacy\Render\Texture.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Sources\pch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Nacy\Event\KeyEvent.h">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Nacy\Render\SplashScreen.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Nacy\Manager\Renderer.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\Nacy\Math\Vector.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Nacy\Render\Scene.cpp">
+    <ClCompile Include="Sources\Nacy\Manager\Scene\Scene.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Nacy\Node\Component.cpp">
+    <ClCompile Include="Sources\Nacy\Object\GameObject.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Nacy\Node\Node.cpp">
+    <ClCompile Include="Sources\Nacy\Render\Renderer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Nacy\Node\SpriteComponent.cpp">
+    <ClCompile Include="Sources\Nacy\Core\Event\Event.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Nacy\Util\Logger\Logger.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Nacy\Util\Animation\Animation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Nacy\Manager\Scene\SceneManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Nacy\Core\Event\Events\KeyEvent.hpp">
+      <Filter>头文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -83,70 +80,82 @@
     <ClInclude Include="Sources\Nacy\Core\GameWindow.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Nacy\Core\NApplication.h">
+    <ClInclude Include="Sources\Nacy\Core\Application.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Nacy\Utilities.h">
+    <ClInclude Include="Sources\Nacy\Util\Utilities.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Nacy\Manager\ResourceManager.h">
+    <ClInclude Include="Sources\Nacy\Manager\Assets\ResourceManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Nacy\Manager\Shader.h">
+    <ClInclude Include="Sources\Nacy\Manager\Shader\Shader.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Nacy\Manager\Shape.h">
+    <ClInclude Include="Sources\Nacy\Render\Shape.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Nacy\Manager\Sprite.h">
+    <ClInclude Include="Sources\Nacy\Render\Sprite.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Nacy\Manager\stb_image.h">
+    <ClInclude Include="Sources\Nacy\Render\Text.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Nacy\Manager\Text.h">
+    <ClInclude Include="Sources\Nacy\Render\Texture.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Nacy\Manager\Texture.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Nacy\Render\Screen.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Nacy\Render\Graphic.h">
+    <ClInclude Include="Sources\Nacy\Render\Graphic.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Sources\pch.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Nacy\Resources\Shaders.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Nacy\Event\Events.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Nacy\Render\SplashScreen.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Nacy\Manager\Renderer.h">
+    <ClInclude Include="Sources\Nacy\Core\Event\Event.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Nacy\Math\Vector.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Nacy\Render\Scene.h">
+    <ClInclude Include="Sources\Nacy\Manager\Scene\Scene.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Sources\NacyEngine.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Nacy\Node\Component.h">
+    <ClInclude Include="Sources\Nacy\Object\GameObject.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Nacy\Node\Node.h">
+    <ClInclude Include="Sources\Nacy\Object\Components\Interface\ShapeComponent.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Nacy\Node\SpriteComponent.h">
+    <ClInclude Include="Sources\Nacy\Core\Event\Events\MouseEvent.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Nacy\Object\Components\Game\SpriteComponent.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Nacy\Render\Renderer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Nacy\Util\Logger\Logger.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Nacy\Util\Animation\Animation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Nacy\Manager\Scene\SceneManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Nacy\Object\Components\Game\TransformComponent.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Nacy\Object\Components\Interface\TextLableComponent.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Nacy\Object\Components\Component.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Nacy\Object\Components\Game\DelayComponent.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -159,5 +168,8 @@
     <Font Include="NacyRes\Comici.ttf">
       <Filter>资源文件</Filter>
     </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

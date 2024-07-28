@@ -1,0 +1,94 @@
+{
+  "name": "Engine x Start",
+  "time": 1,
+  "beats": [
+    {
+      "appearance": 1.0,
+      "channel": 1,
+      "speed": 20
+    },
+    {
+      "appearance": 1.0,
+      "channel": 2,
+      "speed": 20
+    },
+    {
+      "appearance": 3.0,
+      "channel": 3,
+      "speed": 20
+    },
+    {
+      "appearance": 3.0,
+      "channel": 4,
+      "speed": 20
+    },
+    {
+      "appearance": 4.0,
+      "channel": 3,
+      "speed": 20
+    },
+
+    {
+      "appearance": 4.0,
+      "channel": 4,
+      "speed": 20
+    },
+    {
+      "appearance": 5.0,
+      "channel": 1,
+      "speed": 20
+    },
+    {
+      "appearance": 6.0,
+      "channel": 2,
+      "speed": 20
+    },
+    {
+      "appearance": 7.0,
+      "channel": 3,
+      "speed": 20
+    },
+    {
+      "appearance": 8.0,
+      "channel": 4,
+      "speed": 20
+    },
+    {
+      "appearance": 9.0,
+      "channel": 1,
+      "speed": 20
+    },
+    {
+      "appearance": 10.0,
+      "channel": 2,
+      "speed": 20
+    },
+    {
+      "appearance": 12.0,
+      "channel": 3,
+      "speed": 20
+    },
+    {
+      "appearance": 14.0,
+      "channel": 4,
+      "speed": 20
+    },
+    {
+      "appearance": 16.0,
+      "channel": 1,
+      "speed": 20
+    },
+    {
+      "appearance": 17.0,
+      "channel": 2,
+      "speed": 20
+    },
+    {
+      "appearance": 20.0,
+      "channel": 3,
+      "speed": 20
+    }
+  ]
+}
+
+

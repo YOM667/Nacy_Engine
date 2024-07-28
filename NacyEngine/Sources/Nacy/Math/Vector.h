@@ -1,194 +1,200 @@
 #pragma once
-#include "Nacy/Core/Core.h"
-namespace Engine
+#include "Nacy/Core/Core.h"		
+namespace Nacy
 {
 
-	template<size_t S, typename T> class Vector;
-
-	template<typename T>
-	class  Vector<2, T>
+	struct NACY_API Vector2
 	{
 	public:
-		Vector(T x, T y) : x(x), y(y) {}
+		explicit Vector2() : x(0.0f), y(0.0f) {}
 
-		template<typename U>
-		Vector<2, T>& operator=(Vector<2, U> const& vector);
-		template<typename U>
-		Vector<2, T>& operator+=(U scalar);
-		template<typename U>
-		Vector<2, T>& operator+=(Vector<2, U> const& vector);
-		template<typename U>
-		Vector<2, T>& operator-=(U scalar);
-		template<typename U>
-		Vector<2, T>& operator-=(Vector<2, U> const& vector);
-		template<typename U>
-		Vector<2, T>& operator*=(U scalar);
-		template<typename U>
-		Vector<2, T>& operator*=(Vector<2, U> const& vector);
-		template<typename U>
-		Vector<2, T>& operator/=(U scalar);
-		template<typename U>
-		Vector<2, T>& operator/=(Vector<2, U> const& vector);
-		T x, y;
+		explicit Vector2(float x, float y) : x(x), y(y) {}
+
+		static Vector2 create(float x, float y);
+
+		Vector2& operator=(Vector2 const& vector);
+		
+		Vector2& operator+=(float scalar);
+		
+		Vector2& operator+=(Vector2 const& vector);
+		
+		Vector2& operator-=(float scalar);
+		
+		Vector2& operator-=(Vector2 const& vector);
+		
+		Vector2& operator*=(float scalar);
+		
+		Vector2& operator*=(Vector2 const& vector);
+		
+		Vector2& operator/=(float scalar);
+		
+		Vector2& operator/=(Vector2 const& vector);
+
+		float x, y;
 	};
 	//========================================= Vector2 =========================================
-	template<typename T>
-	 Vector<2, T> operator+(Vector<2, T> const& vector, T scalar);
-	template<typename T>
-	 Vector<2, T> operator+(T scalar, Vector<2, T> const& v);
-	template<typename T>
-	 Vector<2, T> operator+(Vector<2, T> const& vector1, Vector<2, T> const& vector2);
-	template<typename T>
-	 Vector<2, T> operator-(Vector<2, T> const& vector, T scalar);
-	template<typename T>
-	 Vector<2, T> operator-(T scalar, Vector<2, T> const& vector);
-	template<typename T>
-	 Vector<2, T> operator-(Vector<2, T> const& vector1, Vector<2, T> const& vector2);
-	template<typename T>
-	 Vector<2, T> operator*(Vector<2, T> const& vector, T scalar);
-	template<typename T>
-	 Vector<2, T> operator*(T scalar, Vector<2, T> const& vector);
-	template<typename T>
-	 Vector<2, T> operator*(Vector<2, T> const& vector1, Vector<2, T> const& vector2);
-	template<typename T>
-	 Vector<2, T> operator/(Vector<2, T> const& vector, T scalar);
-	template<typename T>
-	 Vector<2, T> operator/(T scalar, Vector<2, T> const& vector);
-	template<typename T>
-	 Vector<2, T> operator/(Vector<2, T> const& vector1, Vector<2, T> const& vector2);
+	
+	NACY_API Vector2 operator+(Vector2 const& vector, float scalar);
+	
+	NACY_API Vector2 operator+(float scalar, Vector2 const& v);
+	
+	NACY_API Vector2 operator+(Vector2 const& vector1, Vector2 const& vector2);
+	
+	NACY_API Vector2 operator-(Vector2 const& vector, float scalar);
+	
+	NACY_API Vector2 operator-(float scalar, Vector2 const& vector);
+	
+	NACY_API Vector2 operator-(Vector2 const& vector1, Vector2 const& vector2);
+	
+	NACY_API Vector2 operator*(Vector2 const& vector, float scalar);
+	
+	NACY_API Vector2 operator*(float scalar, Vector2 const& vector);
+	
+	NACY_API Vector2 operator*(Vector2 const& vector1, Vector2 const& vector2);
+	
+	NACY_API Vector2 operator/(Vector2 const& vector, float scalar);
+	
+	NACY_API Vector2 operator/(float scalar, Vector2 const& vector);
+	
+	NACY_API Vector2 operator/(Vector2 const& vector1, Vector2 const& vector2);
 
 	//========================================= Vector3 =========================================
 
-	template<typename T>
-	class  Vector<3, T>
+	
+	struct NACY_API Vector3
 	{
 	public:
-		Vector(T x, T y, T z) : x(x), y(y), z(z) {}
-		template<typename U>
-		Vector<3, T>& operator=(Vector<3, U> const& vector);
-		template<typename U>
-		Vector<3, T>& operator+=(U scalar);
-		template<typename U>
-		Vector<3, T>& operator+=(Vector<3, U> const& vector);
-		template<typename U>
-		Vector<3, T>& operator-=(U scalar);
-		template<typename U>
-		Vector<3, T>& operator-=(Vector<3, U> const& vector);
-		template<typename U>
-		Vector<3, T>& operator*=(U scalar);
-		template<typename U>
-		Vector<3, T>& operator*=(Vector<3, U> const& vector);
-		template<typename U>
-		Vector<3, T>& operator/=(U scalar);
-		template<typename U>
-		Vector<3, T>& operator/=(Vector<3, U> const& vector);
-		T x, y, z;
+		explicit Vector3() : x(0.0f), y(0.0f), z(0.0f) {}
+		explicit Vector3(float x, float y, float z) : x(x), y(y), z(z) {}
+		
+		static Vector3 create(float x, float y, float z);
+
+		Vector3& operator=(Vector3 const& vector);
+		
+		Vector3& operator+=(float scalar);
+		
+		Vector3& operator+=(Vector3 const& vector);
+		
+		Vector3& operator-=(float scalar);
+		
+		Vector3& operator-=(Vector3 const& vector);
+		
+		Vector3& operator*=(float scalar);
+		
+		Vector3& operator*=(Vector3 const& vector);
+		
+		Vector3& operator/=(float scalar);
+		
+		Vector3& operator/=(Vector3 const& vector);
+		float x, y, z;
 	};
 
-	template<typename T>
-	 Vector<3, T> operator+(Vector<3, T> const& vector, T scalar);
-	template<typename T>
-	 Vector<3, T> operator+(T scalar, Vector<3, T> const& v);
-	template<typename T>
-	 Vector<3, T> operator+(Vector<3, T> const& vector1, Vector<3, T> const& vector2);
-	template<typename T>
-	 Vector<3, T> operator-(Vector<3, T> const& vector, T scalar);
-	template<typename T>
-	 Vector<3, T> operator-(T scalar, Vector<3, T> const& vector);
-	template<typename T>
-	 Vector<3, T> operator-(Vector<3, T> const& vector1, Vector<3, T> const& vector2);
-	template<typename T>
-	 Vector<3, T> operator*(Vector<3, T> const& vector, T scalar);
-	template<typename T>
-	 Vector<3, T> operator*(T scalar, Vector<3, T> const& vector);
-	template<typename T>
-	 Vector<3, T> operator*(Vector<3, T> const& vector1, Vector<3, T> const& vector2);
-	template<typename T>
-	 Vector<3, T> operator/(Vector<3, T> const& vector, T scalar);
-	template<typename T>
-	 Vector<3, T> operator/(T scalar, Vector<3, T> const& vector);
-	template<typename T>
-	 Vector<3, T> operator/(Vector<3, T> const& vector1, Vector<3, T> const& vector2);
+	
+	NACY_API Vector3 operator+(Vector3 const& vector, float scalar);
+
+	NACY_API Vector3 operator+(float scalar, Vector3 const& v);
+
+	NACY_API Vector3 operator+(Vector3 const& vector1, Vector3 const& vector2);
+
+	NACY_API Vector3 operator-(Vector3 const& vector, float scalar);
+
+	NACY_API Vector3 operator-(float scalar, Vector3 const& vector);
+
+	NACY_API Vector3 operator-(Vector3 const& vector1, Vector3 const& vector2);
+
+	NACY_API Vector3 operator*(Vector3 const& vector, float scalar);
+
+	NACY_API Vector3 operator*(float scalar, Vector3 const& vector);
+
+	NACY_API Vector3 operator*(Vector3 const& vector1, Vector3 const& vector2);
+
+	NACY_API Vector3 operator/(Vector3 const& vector, float scalar);
+
+	NACY_API Vector3 operator/(float scalar, Vector3 const& vector);
+
+	NACY_API Vector3 operator/(Vector3 const& vector1, Vector3 const& vector2);
 
 	//========================================= Vector4 =========================================
-	template<typename T>
-	class  Vector<4, T>
+	
+	struct NACY_API Vector4
 	{
 	public:
-		Vector(T x, T y, T z) : x(x), y(y), z(z), w(w) {}
-		template<typename U>
-		Vector<4, T>& operator=(Vector<4, U> const& vector);
-		template<typename U>
-		Vector<4, T>& operator+=(U scalar);
-		template<typename U>
-		Vector<4, T>& operator+=(Vector<4, U> const& vector);
-		template<typename U>
-		Vector<4, T>& operator-=(U scalar);
-		template<typename U>
-		Vector<4, T>& operator-=(Vector<4, U> const& vector);
-		template<typename U>
-		Vector<4, T>& operator*=(U scalar);
-		template<typename U>
-		Vector<4, T>& operator*=(Vector<4, U> const& vector);
-		template<typename U>
-		Vector<4, T>& operator/=(U scalar);
-		template<typename U>
-		Vector<4, T>& operator/=(Vector<4, U> const& vector);
-		T x, y, z, w;
+		explicit Vector4() : x(0.0f), y(0.0f), z(0.0f), w(0.0f) {}
+		explicit Vector4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
+		
+		static Vector4 create(float x, float y, float z, float w);
+
+		Vector4& operator=(Vector4 const& vector);
+		
+		Vector4& operator+=(float scalar);
+		
+		Vector4& operator+=(Vector4 const& vector);
+		
+		Vector4& operator-=(float scalar);
+		
+		Vector4& operator-=(Vector4 const& vector);
+		
+		Vector4& operator*=(float scalar);
+		
+		Vector4& operator*=(Vector4 const& vector);
+		
+		Vector4& operator/=(float scalar);
+		
+		Vector4& operator/=(Vector4 const& vector);
+		float x, y, z, w;
 	};
-	template<typename T>
-	 Vector<4, T> operator+(Vector<4, T> const& vector, T scalar);
-	template<typename T>
-	 Vector<4, T> operator+(T scalar, Vector<4, T> const& v);
-	template<typename T>
-	 Vector<4, T> operator+(Vector<4, T> const& vector1, Vector<4, T> const& vector2);
-	template<typename T>
-	 Vector<4, T> operator-(Vector<4, T> const& vector, T scalar);
-	template<typename T>
-	 Vector<4, T> operator-(T scalar, Vector<4, T> const& vector);
-	template<typename T>
-	 Vector<4, T> operator-(Vector<4, T> const& vector1, Vector<4, T> const& vector2);
-	template<typename T>
-	 Vector<4, T> operator*(Vector<4, T> const& vector, T scalar);
-	template<typename T>
-	 Vector<4, T> operator*(T scalar, Vector<4, T> const& vector);
-	template<typename T>
-	 Vector<4, T> operator*(Vector<4, T> const& vector1, Vector<4, T> const& vector2);
-	template<typename T>
-	 Vector<4, T> operator/(Vector<4, T> const& vector, T scalar);
-	template<typename T>
-	 Vector<4, T> operator/(T scalar, Vector<4, T> const& vector);
-	template<typename T>
-	 Vector<4, T> operator/(Vector<4, T> const& vector1, Vector<4, T> const& vector2);
+	
+	NACY_API Vector4 operator+(Vector4 const& vector, float scalar);
+
+	NACY_API Vector4 operator+(float scalar, Vector4 const& v);
+
+	NACY_API Vector4 operator+(Vector4 const& vector1, Vector4 const& vector2);
+
+	NACY_API Vector4 operator-(Vector4 const& vector, float scalar);
+
+	NACY_API Vector4 operator-(float scalar, Vector4 const& vector);
+
+	NACY_API Vector4 operator-(Vector4 const& vector1, Vector4 const& vector2);
+
+	NACY_API Vector4 operator*(Vector4 const& vector, float scalar);
+
+	NACY_API Vector4 operator*(float scalar, Vector4 const& vector);
+	
+	NACY_API Vector4 operator*(Vector4 const& vector1, Vector4 const& vector2);
+
+	NACY_API Vector4 operator/(Vector4 const& vector, float scalar);
+
+	NACY_API Vector4 operator/(float scalar, Vector4 const& vector);
+
+	NACY_API Vector4 operator/(Vector4 const& vector1, Vector4 const& vector2);
 
 	//========================================= Function =========================================
-	template<typename T>
-	 T dot(Vector<2, T> const& vector1, Vector<2, T> const& vector2);
-	template<typename T>
-	 T dot(Vector<3, T> const& vector1, Vector<3, T> const& vector2);
-	template<typename T>
-	 T dot(Vector<4, T> const& vector1, Vector<4, T> const& vector2);
-	template<size_t S, typename T>
-	 T length(Vector<S, T> const& vector);
-	template<size_t S, typename T>
-	 T distance(Vector<S, T> const& vector1, Vector<S, T> const& vector2);
-
-
-	template<size_t S, typename T>
-	 Vector<2, T> normalize(Vector<S, T> vector);
 	
+	NACY_API float dot(Vector2 const& vector1, Vector2 const& vector2);
+	NACY_API float dot(Vector3 const& vector1, Vector3 const& vector2);
+	NACY_API float dot(Vector4 const& vector1, Vector4 const& vector2);
+
+	NACY_API float length(Vector2 const& vector);
+	NACY_API float length(Vector3 const& vector);
+	NACY_API float length(Vector4 const& vector);
+
+	NACY_API float distance(Vector2 const& vector1, Vector2 const& vector2);
+	NACY_API float distance(Vector3 const& vector1, Vector3 const& vector2);
+	NACY_API float distance(Vector4 const& vector1, Vector4 const& vector2);
+
+	NACY_API Vector2 normalize(Vector2 vector);
+	NACY_API Vector3 normalize(Vector3 vector);
+	NACY_API Vector4 normalize(Vector4 vector);
 	//========================================= Type Define =========================================
-	 typedef Vector<2, float> NACY_API Vector2F;
-	 typedef Vector<2, double> NACY_API Vector2D;
-	 typedef Vector<3, float> NACY_API Vector3F;
-	 typedef Vector<3, double> NACY_API Vector3D;
-	 typedef Vector<4, float> NACY_API Vector4F;
-	 typedef Vector<4, double> NACY_API Vector4D;
+	struct NACY_API RGBA
+	{
+		RGBA();
+		RGBA(float color);
+		RGBA(float red, float green, float blue, float alpha);
+		float red, green, blue, alpha;
+	};
 
-	 typedef Vector4F NACY_API RGBA;
-	 typedef Vector3F NACY_API RGB;
 
-	
 }
 
 

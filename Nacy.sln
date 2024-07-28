@@ -7,8 +7,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NacyEngine", "NacyEngine\Na
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BeatBap", "BeatBap\BeatBap.vcxproj", "{5477AA13-B619-48B4-8B64-894ECA8FBA8A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NacyPacker", "NacyPacker\NacyPacker.vcxproj", "{2825B3AB-97F4-414A-91B8-4F04CF8B0FEE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -33,14 +31,6 @@ Global
 		{5477AA13-B619-48B4-8B64-894ECA8FBA8A}.Release|x64.Build.0 = Release|x64
 		{5477AA13-B619-48B4-8B64-894ECA8FBA8A}.Release|x86.ActiveCfg = Release|Win32
 		{5477AA13-B619-48B4-8B64-894ECA8FBA8A}.Release|x86.Build.0 = Release|Win32
-		{2825B3AB-97F4-414A-91B8-4F04CF8B0FEE}.Debug|x64.ActiveCfg = Debug|x64
-		{2825B3AB-97F4-414A-91B8-4F04CF8B0FEE}.Debug|x64.Build.0 = Debug|x64
-		{2825B3AB-97F4-414A-91B8-4F04CF8B0FEE}.Debug|x86.ActiveCfg = Debug|Win32
-		{2825B3AB-97F4-414A-91B8-4F04CF8B0FEE}.Debug|x86.Build.0 = Debug|Win32
-		{2825B3AB-97F4-414A-91B8-4F04CF8B0FEE}.Release|x64.ActiveCfg = Release|x64
-		{2825B3AB-97F4-414A-91B8-4F04CF8B0FEE}.Release|x64.Build.0 = Release|x64
-		{2825B3AB-97F4-414A-91B8-4F04CF8B0FEE}.Release|x86.ActiveCfg = Release|Win32
-		{2825B3AB-97F4-414A-91B8-4F04CF8B0FEE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

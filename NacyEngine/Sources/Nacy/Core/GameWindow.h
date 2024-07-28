@@ -1,10 +1,9 @@
 #pragma once
 
 #include "Nacy/Core/Core.h"
-#include <Nacy/Event/Events.h>
-#include <functional>
+#include "Nacy/Core/Event/Event.h"
 
-namespace Engine
+namespace Nacy
 {
 
 	using EventCallbackFn = std::function<void(Event&)>;
@@ -36,7 +35,7 @@ namespace Engine
 	struct NACY_API WindowConfig
 	{
 		// Window's visiale title 
-		std::string title;
+		const char* title;
 		// Window's position in user's screen.
 		float positionX, positionY;
 		// Window's size
@@ -48,7 +47,7 @@ namespace Engine
 		// when the field is true,window will centered;
 		bool centered;
 
-		WindowConfig(const std::string& title = "Game",
+		WindowConfig(const char* title = "Game",
 			bool centered = true,
 			float width = 960,
 			float height = 540,
@@ -65,32 +64,32 @@ namespace Engine
 	/*
 	* User can create a "GameWindow" to render griphic or achieve game function
 	*/
-	class NACY_API GameWindow
+	class GameWindow
 	{
 	public:
 		//when User create a GameWindow, the constuctor will inovke "init()" method
-		GameWindow(const WindowConfig& configs);
+		NACY_API GameWindow(const WindowConfig& configs);
 		//when the process will destory, ~GameWindow() will invoke "destory()" method
-		~GameWindow();
+		NACY_API ~GameWindow();
 		// get the glfw window instance
-		GLFWwindow* Get();
+		NACY_API GLFWwindow* Get();
 		//User can use "update()" method to flush window fream and recive User's operate
-		void update();
-		void clear();
+		NACY_API void Update();
+		NACY_API void Clear();
 		//User can use "destory()" method to shutdown the window
-		void destory();
-		void setVSync(bool enabled);
+		NACY_API void Destory();
+		NACY_API void SetVSync(bool enabled);
 
 		//get window's size
-		inline float GetWidth();
-		inline float GetHeight();
-		inline glm::mat4 GetProjection();
+		NACY_API inline float GetWidth();
+		NACY_API inline float GetHeight();
+		NACY_API inline glm::mat4 GetProjection();
 
-		inline void setEventCallback(const EventCallbackFn& callback);
+		NACY_API void setEventCallback(const EventCallbackFn& callback);
 	private:
 		//Initialise glfw and glew. Load WindowConfigs
-		void init(const WindowConfig& configs);
-		void createGLSpace();
+		NACY_API void Init(const WindowConfig& configs);
+		NACY_API void CreateGLSpace();
 
 		GLFWwindow* window;
 		WindowConfig configs;
@@ -99,10 +98,10 @@ namespace Engine
 
 		struct WindowData
 		{
-			std::string Title;
-			float Width;
-			float Height;
-			bool VSync;
+			const char* Title;
+			float Width = 0.0f;
+			float Height = 0.0f;
+			bool VSync = true;
 
 			EventCallbackFn EventCallback;
 		};

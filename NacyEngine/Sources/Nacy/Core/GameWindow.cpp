@@ -1,24 +1,26 @@
 #include "pch.h"
 #include "GameWindow.h"
-#include "Nacy/Event/KeyEvent.h"
-namespace Engine
+
+#include "Nacy/Core/Event/Events/KeyEvent.hpp"
+#include "Nacy/Core/Event/Events/MouseEvent.hpp"
+namespace Nacy
 {
 	static bool GLFWInitialized = false;
 	GameWindow::GameWindow(const WindowConfig& configs) : configs(configs)
 	{
-		this->init(this->configs);
+		this->Init(this->configs);
 	}
 	GameWindow::~GameWindow()
 	{
-		this->destory();
+		this->Destory();
 	}
 	GLFWwindow* GameWindow::Get()
 	{
 		return this->window;
 	}
-	void GameWindow::init(const WindowConfig& configs)
+	void GameWindow::Init(const WindowConfig& configs)
 	{
-		this->createGLSpace();
+		this->CreateGLSpace();
 
 		windowData.Title = configs.title;
 		windowData.Width = configs.width;
@@ -52,10 +54,37 @@ namespace Engine
 						break; 
 					}
 				}
+			});
+		glfwSetMouseButtonCallback(this->window, [](GLFWwindow* window, int button, int action, int mods)
+			{
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+
+				switch (action)
+				{
+				case GLFW_PRESS: { MouseButtonPressedEvent event(button);	data.EventCallback(event);	break; }
+				case GLFW_RELEASE: { MouseButtonReleasedEvent event(button);	data.EventCallback(event);	break; }
+				}
+			}
+		);
+
+		glfwSetScrollCallback(this->window, [](GLFWwindow* window, double xOffset, double yOffset)
+			{
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+				MouseScrolledEvent event((float)xOffset, (float)yOffset);
+				data.EventCallback(event);
+			}
+		);
+
+		glfwSetCursorPosCallback(this->window, [](GLFWwindow* window, double xpos, double ypos)
+			{
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+
+				MouseMovedEvent event((float)xpos, (float)ypos);
+				data.EventCallback(event);
 			}
 		);
 	}
-	void GameWindow::createGLSpace()
+	void GameWindow::CreateGLSpace()
 	{
 		if (!GLFWInitialized)
 		{
@@ -67,19 +96,20 @@ namespace Engine
 			/* The user's window configuration */
 			glfwWindowHint(GLFW_RESIZABLE, configs.resizeable);
 			glfwWindowHint(GLFW_VISIBLE, configs.visiable);
+			glfwWindowHint(GLFW_SAMPLES, 4);
 
 		}
 		/* Create the window by user's window configuration */
-		this->window = glfwCreateWindow(this->configs.width,
-			this->configs.height,
-			this->configs.title.c_str(),
+		this->window = glfwCreateWindow(static_cast<int>(this->configs.width),
+			static_cast<int>(this->configs.height),
+			this->configs.title,
 			nullptr,
 			nullptr);
 
 		Assert(window, "The window created failed");
 
-		float maxWidth = GetSystemMetrics(SM_CXSCREEN);
-		float maxHieght = GetSystemMetrics(SM_CYSCREEN);
+		float maxWidth = static_cast<float>(GetSystemMetrics(SM_CXSCREEN));
+		float maxHieght = static_cast<float>(GetSystemMetrics(SM_CYSCREEN));
 		float posX = 0.0f, posY = 0.0f;
 		if (this->configs.positionX == -1 && this->configs.positionY == -1)
 		{
@@ -94,14 +124,15 @@ namespace Engine
 		/* Set the window position */
 		glfwSetWindowMonitor(window,
 			nullptr,
-			posX,
-			posY,
-			this->configs.width,
-			this->configs.height,
+			static_cast<int>(posX),
+			static_cast<int>(posY),
+			static_cast<int>(this->configs.width),
+			static_cast<int>(this->configs.height),
 			GLFW_DONT_CARE);
 
 		glfwMakeContextCurrent(window);
-		glViewport(0, 0, this->configs.width, this->configs.height);
+		glViewport(0, 0, static_cast<int>(this->configs.width), static_cast<int>(this->configs.height));
+		this->SetVSync(true);
 		this->projection = glm::ortho(0.0f, this->GetWidth(), this->GetHeight(), 0.0f, -1.0f, 1.0f);
 
 		if (glewInit() != GLEW_OK)
@@ -109,24 +140,31 @@ namespace Engine
 			glfwTerminate();
 		}
 	}
-	void GameWindow::update()
+	void GameWindow::Update()
 	{
 		glfwPollEvents();
 		glfwSwapBuffers(this->window);
 	}
-	void GameWindow::clear()
+	void GameWindow::Clear()
 	{
 		glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
-	void GameWindow::destory()
+	void GameWindow::Destory()
 	{
 		glfwDestroyWindow(this->window);
 		glfwTerminate();
 	}
-	void GameWindow::setVSync(bool enabled)
+	void GameWindow::SetVSync(bool enabled)
 	{
-
+		if (enabled)
+		{
+			glfwSwapInterval(1);
+		}
+		else
+		{
+			glfwSwapInterval(0);
+		}
 	}
 	float GameWindow::GetWidth()
 	{

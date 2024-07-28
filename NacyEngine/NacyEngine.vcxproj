@@ -112,7 +112,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NACY_PLATFORM_WINDOW;NACY_BUILD_DLL;MAPLE_BUILD_DLL_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>Sources;$(SolutionDir)NacyEngine\Dependencies\GLM\include;$(SolutionDir)NacyEngine\Dependencies\FreeType\include;$(SolutionDir)NacyEngine\Dependencies\GLFW\include;$(SolutionDir)NacyEngine\Dependencies\GLEW\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Sources;Sources;$(SolutionDir)NacyEngine\Dependencies\STB;$(SolutionDir)NacyEngine\Dependencies\GLM\include;$(SolutionDir)NacyEngine\Dependencies\FreeType\include;$(SolutionDir)NacyEngine\Dependencies\GLFW\include;$(SolutionDir)NacyEngine\Dependencies\GLEW\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -133,7 +133,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NACY_PLATFORM_WINDOW;NACY_BUILD_DLL;MAPLE_BUILD_DLLNDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>Sources;$(SolutionDir)NacyEngine\Dependencies\GLM\include;$(SolutionDir)NacyEngine\Dependencies\FreeType\include;$(SolutionDir)NacyEngine\Dependencies\GLFW\include;$(SolutionDir)NacyEngine\Dependencies\GLEW\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Sources;Sources;$(SolutionDir)NacyEngine\Dependencies\STB;$(SolutionDir)NacyEngine\Dependencies\GLM\include;$(SolutionDir)NacyEngine\Dependencies\FreeType\include;$(SolutionDir)NacyEngine\Dependencies\GLFW\include;$(SolutionDir)NacyEngine\Dependencies\GLEW\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -149,61 +149,67 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\Nacy\Node\Component.cpp" />
-    <ClCompile Include="Sources\Nacy\Node\Node.cpp" />
-    <ClCompile Include="Sources\Nacy\Node\SpriteComponent.cpp" />
-    <ClCompile Include="Sources\Nacy\Render\Scene.cpp" />
-    <ClCompile Include="Sources\Nacy\Manager\Renderer.cpp" />
-    <ClCompile Include="Sources\Nacy\Event\KeyEvent.h" />
-    <ClCompile Include="Sources\Nacy\Render\SplashScreen.cpp" />
+    <ClCompile Include="Sources\Nacy\Manager\Scene\SceneManager.cpp" />
+    <ClCompile Include="Sources\Nacy\Util\Animation\Animation.cpp" />
+    <ClCompile Include="Sources\Nacy\Util\Logger\Logger.cpp" />
+    <ClCompile Include="Sources\Nacy\Core\Event\Event.cpp" />
+    <ClCompile Include="Sources\Nacy\Render\Renderer.cpp" />
+    <ClCompile Include="Sources\Nacy\Object\GameObject.cpp" />
+    <ClCompile Include="Sources\Nacy\Manager\Scene\Scene.cpp" />
+    <ClCompile Include="Sources\Nacy\Core\Event\Events\KeyEvent.hpp" />
     <ClCompile Include="Sources\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Sources\Nacy\Render\Graphic.cpp" />
     <ClCompile Include="Sources\Nacy\Core\GameWindow.cpp" />
-    <ClCompile Include="Sources\Nacy\Core\NApplication.cpp" />
-    <ClCompile Include="Sources\Nacy\Manager\ResourceManager.cpp" />
-    <ClCompile Include="Sources\Nacy\Manager\Shader.cpp" />
-    <ClCompile Include="Sources\Nacy\Manager\Shape.cpp" />
-    <ClCompile Include="Sources\Nacy\Manager\Sprite.cpp" />
-    <ClCompile Include="Sources\Nacy\Manager\Text.cpp" />
-    <ClCompile Include="Sources\Nacy\Manager\Texture.cpp" />
-    <ClCompile Include="Sources\Nacy\Render\Screen.cpp" />
-    <ClCompile Include="Sources\Nacy\Utilities.cpp" />
+    <ClCompile Include="Sources\Nacy\Core\Application.cpp" />
+    <ClCompile Include="Sources\Nacy\Manager\Assets\ResourceManager.cpp" />
+    <ClCompile Include="Sources\Nacy\Manager\Shader\Shader.cpp" />
+    <ClCompile Include="Sources\Nacy\Render\Shape.cpp" />
+    <ClCompile Include="Sources\Nacy\Render\Sprite.cpp" />
+    <ClCompile Include="Sources\Nacy\Render\Text.cpp" />
+    <ClCompile Include="Sources\Nacy\Render\Texture.cpp" />
+    <ClCompile Include="Sources\Nacy\Util\Utilities.cpp" />
     <ClCompile Include="Sources\Nacy\Math\Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\Nacy\Object\Components\Game\DelayComponent.hpp" />
+    <ClInclude Include="Sources\Nacy\Object\Components\Component.hpp" />
+    <ClInclude Include="Sources\Nacy\Manager\Scene\SceneManager.h" />
+    <ClInclude Include="Sources\Nacy\Util\Animation\Animation.h" />
+    <ClInclude Include="Sources\Nacy\Util\Logger\Logger.h" />
+    <ClInclude Include="Sources\Nacy\Render\Renderer.h" />
+    <ClInclude Include="Sources\Nacy\Core\Event\Events\MouseEvent.hpp" />
     <ClInclude Include="Sources\NacyEngine.h" />
-    <ClInclude Include="Sources\Nacy\Node\Component.h" />
-    <ClInclude Include="Sources\Nacy\Node\Node.h" />
-    <ClInclude Include="Sources\Nacy\Node\SpriteComponent.h" />
-    <ClInclude Include="Sources\Nacy\Render\Scene.h" />
-    <ClInclude Include="Sources\Nacy\Manager\Renderer.h" />
-    <ClInclude Include="Sources\Nacy\Event\Events.h" />
-    <ClInclude Include="Sources\Nacy\Render\SplashScreen.h" />
-    <ClInclude Include="Sources\Nacy\Resources\Shaders.h" />
+    <ClInclude Include="Sources\Nacy\Object\GameObject.h" />
+    <ClInclude Include="Sources\Nacy\Object\Components\Interface\ShapeComponent.hpp" />
+    <ClInclude Include="Sources\Nacy\Manager\Scene\Scene.h" />
+    <ClInclude Include="Sources\Nacy\Core\Event\Event.h" />
     <ClInclude Include="Sources\pch.h" />
-    <ClInclude Include="Sources\Nacy\Render\Graphic.h" />
+    <ClInclude Include="Sources\Nacy\Render\Graphic.hpp" />
     <ClInclude Include="Sources\Nacy\Core\Core.h" />
     <ClInclude Include="Sources\Nacy\Core\GameWindow.h" />
-    <ClInclude Include="Sources\Nacy\Core\NApplication.h" />
-    <ClInclude Include="Sources\Nacy\Manager\ResourceManager.h" />
-    <ClInclude Include="Sources\Nacy\Manager\Shader.h" />
-    <ClInclude Include="Sources\Nacy\Manager\Shape.h" />
-    <ClInclude Include="Sources\Nacy\Manager\Sprite.h" />
-    <ClInclude Include="Sources\Nacy\Manager\stb_image.h" />
-    <ClInclude Include="Sources\Nacy\Manager\Text.h" />
-    <ClInclude Include="Sources\Nacy\Manager\Texture.h" />
-    <ClInclude Include="Sources\Nacy\Render\Screen.h" />
-    <ClInclude Include="Sources\Nacy\Utilities.h" />
+    <ClInclude Include="Sources\Nacy\Core\Application.h" />
+    <ClInclude Include="Sources\Nacy\Manager\Assets\ResourceManager.h" />
+    <ClInclude Include="Sources\Nacy\Manager\Shader\Shader.h" />
+    <ClInclude Include="Sources\Nacy\Render\Shape.h" />
+    <ClInclude Include="Sources\Nacy\Render\Sprite.h" />
+    <ClInclude Include="Sources\Nacy\Render\Text.h" />
+    <ClInclude Include="Sources\Nacy\Render\Texture.h" />
+    <ClInclude Include="Sources\Nacy\Util\Utilities.h" />
     <ClInclude Include="Sources\Nacy\Math\Vector.h" />
+    <ClInclude Include="Sources\Nacy\Object\Components\Game\SpriteComponent.hpp" />
+    <ClInclude Include="Sources\Nacy\Object\Components\Game\TransformComponent.hpp" />
+    <ClInclude Include="Sources\Nacy\Object\Components\Interface\TextLableComponent.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="NacyRes\nacy.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="NacyRes\Comici.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -10,8 +10,10 @@
 #include <cmath>
 #include <functional>
 #include <map>
+#include <unordered_map>
 #include <set>
 #include <vector>
+#include <bitset>
 #include <memory>
 
 #include <glm/glm.hpp>

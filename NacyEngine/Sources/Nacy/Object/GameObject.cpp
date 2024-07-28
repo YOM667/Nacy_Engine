@@ -1,0 +1,30 @@
+#include "pch.h"
+
+#include "GameObject.h"
+#include "Nacy/Object/Components/Game/TransformComponent.hpp"
+namespace Nacy
+{
+    GameObject::GameObject(std::string name)
+        : name(name), visiable(true)
+    {
+        this->AddComponent(new TransformComponent());
+    }
+
+    std::string GameObject::GetName()
+    {
+        return this->name;
+    }
+
+    void GameObject::AddComponent(Component* component)
+    {
+        this->components.push_back(component);
+    }
+    bool GameObject::GetVisiable()
+    {
+        return this->visiable;
+    }
+    void GameObject::SetVisiable(bool visiable = true)
+    {
+        this->visiable = visiable;
+    }
+}

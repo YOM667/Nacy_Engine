@@ -112,15 +112,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NACY_PLATFORM_WINDOW;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)NacyEngine\Sources;$(SolutionDir)NacyEngine\Dependencies\FreeType\include;$(SolutionDir)NacyEngine\Dependencies\GLFW\include;$(SolutionDir)NacyEngine\Dependencies\GLM\include;$(SolutionDir)NacyEngine\Dependencies\GLEW\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Sources;$(SolutionDir)NacyEngine\Sources;$(SolutionDir)BeatBap\Dependencies\json\include;$(SolutionDir)BeatBap\Dependencies\IrrKlang\include;$(SolutionDir)NacyEngine\Dependencies\FreeType\include;$(SolutionDir)NacyEngine\Dependencies\GLFW\include;$(SolutionDir)NacyEngine\Dependencies\GLM\include;$(SolutionDir)NacyEngine\Dependencies\GLEW\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)NacyEngine\Dependencies\FreeType\lib;$(SolutionDir)NacyEngine\Dependencies\GLFW\lib;$(SolutionDir)NacyEngine\Dependencies\GLEW\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;freetype.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)BeatBap\Dependencies\IrrKlang\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>irrKlang.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -131,7 +131,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NACY_PLATFORM_WINDOW;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)NacyEngine\Sources;$(SolutionDir)NacyEngine\Dependencies\FreeType\include;$(SolutionDir)NacyEngine\Dependencies\GLFW\include;$(SolutionDir)NacyEngine\Dependencies\GLM\include;$(SolutionDir)NacyEngine\Dependencies\GLEW\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Sources;$(SolutionDir)NacyEngine\Sources;$(SolutionDir)BeatBap\Dependencies\IrrKlang\include;$(SolutionDir)NacyEngine\Dependencies\FreeType\include;$(SolutionDir)NacyEngine\Dependencies\GLFW\include;$(SolutionDir)NacyEngine\Dependencies\GLM\include;$(SolutionDir)NacyEngine\Dependencies\GLEW\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
@@ -140,8 +140,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)NacyEngine\Dependencies\FreeType\lib;$(SolutionDir)NacyEngine\Dependencies\GLFW\lib;$(SolutionDir)NacyEngine\Dependencies\GLEW\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;freetype.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)BeatBap\Dependencies\IrrKlang\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>irrKlang.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -150,16 +150,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\SoundEngine\SoundEngine.cpp" />
+    <ClCompile Include="Sources\Game\BeatBap.cpp" />
     <ClCompile Include="Sources\main.cpp" />
-    <ClCompile Include="Sources\Screens\GameScene.hpp" />
-    <ClCompile Include="Sources\Screens\MenuScreen.cpp" />
+    <ClCompile Include="Sources\Game\Screens\GameScene.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sources\Loader\SheetsLoader.hpp" />
-    <ClInclude Include="Sources\Screens\SelectedScreen.hpp" />
-    <ClInclude Include="Sources\Renderer\BackgroundRenderer.hpp" />
-    <ClInclude Include="Sources\BeatBap.hpp" />
-    <ClInclude Include="Sources\Screens\MenuScreen.h" />
+    <ClInclude Include="Sources\Game\Screens\SplashScene.hpp" />
+    <ClInclude Include="Sources\SoundEngine\SoundEngine.h" />
+    <ClInclude Include="Sources\Game\Screens\Objects\Objects.hpp" />
+    <ClInclude Include="Sources\Game\Screens\SelectedScene.hpp" />
+    <ClInclude Include="Sources\Renderer\BGRenderer.hpp" />
+    <ClInclude Include="Sources\Game\BeatBap.h" />
+    <ClInclude Include="Sources\Game\Screens\MenuScene.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Fonts\CoffeeHealing-1GrKe.ttf" />
@@ -169,6 +172,16 @@
   <ItemGroup>
     <None Include="Resources\Shaders\background.fs" />
     <None Include="Resources\Shaders\background.vs" />
+    <None Include="Resources\Sheets\Engine x Start.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="NacyRes\nacy.png" />
+    <Image Include="Resources\Textures\click.png" />
+    <Image Include="Resources\Textures\Engine x Start!!.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Resources\Audio\CrossingSound - Engine x Start!! (melody mix).mp3" />
+    <Media Include="Resources\Audio\music.mp3" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

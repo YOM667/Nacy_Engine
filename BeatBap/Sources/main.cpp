@@ -1,9 +1,12 @@
-#include "BeatBap.hpp"
+#include "Game/BeatBap.h"
 
 int main()
 {
-	auto app = BeatBap::GetInstance();
-	app->Start();
-
+	auto beatbap = new BeatBap();
+	auto app = BeatBap::GetApplication();
+	beatbap->Init();
+	beatbap->Run();
+	beatbap->Stop();
+	delete beatbap;
 	return 0;
 }

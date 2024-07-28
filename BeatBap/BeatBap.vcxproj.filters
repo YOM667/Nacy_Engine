@@ -18,27 +18,36 @@
     <ClCompile Include="Sources\main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Screens\MenuScreen.cpp">
+    <ClCompile Include="Sources\Game\Screens\GameScene.hpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Game\BeatBap.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Screens\GameScene.hpp">
+    <ClCompile Include="Sources\SoundEngine\SoundEngine.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sources\Screens\MenuScreen.h">
+    <ClInclude Include="Sources\Game\Screens\MenuScene.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\BeatBap.hpp">
+    <ClInclude Include="Sources\Game\BeatBap.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Renderer\BackgroundRenderer.hpp">
+    <ClInclude Include="Sources\Renderer\BGRenderer.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Screens\SelectedScreen.hpp">
+    <ClInclude Include="Sources\Game\Screens\SelectedScene.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Loader\SheetsLoader.hpp">
+    <ClInclude Include="Sources\Game\Screens\Objects\Objects.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\SoundEngine\SoundEngine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Game\Screens\SplashScene.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -46,8 +55,12 @@
     <Font Include="Resources\Fonts\CoffeeHealing-1GrKe.ttf">
       <Filter>资源文件</Filter>
     </Font>
-    <Font Include="Resources\Fonts\Ditty-Rp72W.ttf" />
-    <Font Include="Resources\Fonts\Comici.ttf" />
+    <Font Include="Resources\Fonts\Comici.ttf">
+      <Filter>资源文件</Filter>
+    </Font>
+    <Font Include="Resources\Fonts\Ditty-Rp72W.ttf">
+      <Filter>资源文件</Filter>
+    </Font>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\background.fs">
@@ -56,5 +69,27 @@
     <None Include="Resources\Shaders\background.vs">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="Resources\Sheets\Engine x Start.json">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="NacyRes\nacy.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="Resources\Textures\Engine x Start!!.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="Resources\Textures\click.png">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Resources\Audio\CrossingSound - Engine x Start!! (melody mix).mp3">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="Resources\Audio\music.mp3">
+      <Filter>资源文件</Filter>
+    </Media>
   </ItemGroup>
 </Project>
