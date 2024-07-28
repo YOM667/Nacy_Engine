@@ -7,9 +7,9 @@ We suggest to Use C++17 and above version
 
 ## Build
 
-* use git clone this project
+* clone this project
 * you need to the NacyEngine Dir to unzip The `Dependencies.zip` to a `Dependencies` Dir
-* Openg your visual studio import the project
+* Open your visual studio import the project
 
 ## Framework
 
