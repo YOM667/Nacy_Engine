@@ -83,8 +83,12 @@ namespace Nacy
 		//get window's size
 		NACY_API inline float GetWidth();
 		NACY_API inline float GetHeight();
-		NACY_API inline glm::mat4 GetProjection();
 
+		NACY_API void SetWidth(float width);
+		NACY_API void SetHeight(float height);
+
+		NACY_API inline glm::mat4 GetProjection();
+		NACY_API void SetNewProjection(const glm::mat4& projection);
 		NACY_API void setEventCallback(const EventCallbackFn& callback);
 	private:
 		//Initialise glfw and glew. Load WindowConfigs

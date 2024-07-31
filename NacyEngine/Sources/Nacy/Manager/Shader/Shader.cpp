@@ -105,7 +105,7 @@ namespace Nacy
     {
         glUniform1i(glGetUniformLocation(this->ID, name), (int)value);
     }
-    void Shader::checkCompileErrors(unsigned int shader, std::string type)
+    void Shader::checkCompileErrors(uint32_t shader, std::string type)
     {
         int success;
         char infoLog[1024];

@@ -1,8 +1,10 @@
 #include "pch.h"
 #include "GameWindow.h"
 
+#include "Nacy/Util/Logger/Logger.h"
 #include "Nacy/Core/Event/Events/KeyEvent.hpp"
 #include "Nacy/Core/Event/Events/MouseEvent.hpp"
+#include "Nacy/Core/Event/Events/WindowEvent.hpp"
 namespace Nacy
 {
 	static bool GLFWInitialized = false;
@@ -18,6 +20,12 @@ namespace Nacy
 	{
 		return this->window;
 	}
+
+	static void ErrorCallback(int error_code, const char* description)
+	{
+		Error("GLFW Error (code: %d): %s", error_code, description);
+	}
+
 	void GameWindow::Init(const WindowConfig& configs)
 	{
 		this->CreateGLSpace();
@@ -27,6 +35,7 @@ namespace Nacy
 		windowData.Height = configs.height;
 
 		glfwSetWindowUserPointer(this->window, &windowData);
+
 
 		glfwSetKeyCallback(this->window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 			{
@@ -80,6 +89,16 @@ namespace Nacy
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
 				MouseMovedEvent event((float)xpos, (float)ypos);
+				data.EventCallback(event);
+			}
+		);
+
+		glfwSetFramebufferSizeCallback(this->window, [](GLFWwindow* window, int width, int height) 
+			{
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+
+
+				WindowResizeEvent event(width, height);
 				data.EventCallback(event);
 			}
 		);
@@ -140,6 +159,7 @@ namespace Nacy
 			glfwTerminate();
 		}
 	}
+
 	void GameWindow::Update()
 	{
 		glfwPollEvents();
@@ -174,9 +194,24 @@ namespace Nacy
 	{
 		return this->configs.height;
 	}
+	void GameWindow::SetWidth(float width)
+	{
+		this->configs.width = width;
+	}
+
+	void GameWindow::SetHeight(float height)
+	{
+		this->configs.height = height;
+	}
+	
+
 	inline glm::mat4 GameWindow::GetProjection()
 	{
 		return this->projection;
+	}
+	void GameWindow::SetNewProjection(const glm::mat4& projection)
+	{
+		this->projection = projection;
 	}
 	inline void GameWindow::setEventCallback(const EventCallbackFn& callback)
 	{

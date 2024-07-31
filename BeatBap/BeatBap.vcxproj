@@ -150,12 +150,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Game\Loader\SheetManager.cpp" />
     <ClCompile Include="Sources\SoundEngine\SoundEngine.cpp" />
     <ClCompile Include="Sources\Game\BeatBap.cpp" />
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\Game\Screens\GameScene.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\Game\Loader\SheetManager.h" />
     <ClInclude Include="Sources\Game\Screens\SplashScene.hpp" />
     <ClInclude Include="Sources\SoundEngine\SoundEngine.h" />
     <ClInclude Include="Sources\Game\Screens\Objects\Objects.hpp" />

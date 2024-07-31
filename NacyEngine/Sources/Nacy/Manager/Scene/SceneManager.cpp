@@ -4,8 +4,8 @@
 namespace Nacy
 {
 	SceneManager* SceneManager::instance = nullptr;
-
 	SceneManager::SceneManager()
+		: scene(nullptr)
 	{
 		auto shape = new ShapeRenderer();
 
@@ -15,21 +15,6 @@ namespace Nacy
 
 		this->graphic = new Graphic(sprite, shape, text);
 	}
-
-	SceneManager::~SceneManager()
-	{
-		if (this->graphic != nullptr)
-		{
-			delete this->graphic;
-			this->graphic = nullptr;
-		}
-		if (this->scene != nullptr)
-		{
-			delete this->scene;
-			this->scene = nullptr;
-		}
-	}
-
 
 	void SceneManager::Render(double delta)
 	{
@@ -44,6 +29,11 @@ namespace Nacy
 	void SceneManager::SetWindowSize(const Vector2& size)
 	{
 		this->size = size;
+		if (scene != nullptr)
+		{
+			this->scene->SetWindowSize(this->size.x, this->size.y);
+		}
+		
 	}
 
 	SceneManager* SceneManager::GetInstance()
@@ -72,9 +62,10 @@ namespace Nacy
 		}
 
 	}
-	Scene* SceneManager::GetCurrentScene()
+	
+	int SceneManager::GetCurrentSceneID()
 	{
-		return this->scene;
+		return this->scene->GetID();
 	}
 	Graphic* SceneManager::GetGraphic()
 	{

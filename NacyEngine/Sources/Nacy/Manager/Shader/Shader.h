@@ -218,6 +218,6 @@ namespace Nacy
         void SetMatrix3F(const char* name, const glm::mat3& mat) const;
         void SetMatrix4F(const char* name, const glm::mat4& mat) const;
     private:
-        static void checkCompileErrors(unsigned int shader, std::string type);
+        static void checkCompileErrors(uint32_t shader, std::string type);
     };
 }

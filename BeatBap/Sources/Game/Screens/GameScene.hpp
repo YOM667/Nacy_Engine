@@ -1,50 +1,8 @@
 #pragma once 
 #include <NacyEngine.h>
-#include <fstream>
-#include <nlohmann/json.hpp>
+#include "Game/Loader/SheetManager.h"
 #include "Objects/Objects.hpp"
 #include "SoundEngine/SoundEngine.h"
-struct Beat
-{
-	int channel;
-	double appearance;
-	double speed;
-};
-
-struct Sheet
-{
-	std::string name;
-	int time;
-	std::vector<Beat*> beats;
-};
-
-class SheetLoader
-{
-	using json = nlohmann::json;
-public:
-	Sheet* Read()
-	{
-		std::ifstream sheetFile("Resources/Sheets/Engine x Start.json");
-		json data = json::parse(sheetFile);
-		std::vector<Beat*> beats;
-		for (int index = 0; index < data["beats"].size(); index++) {
-			json beatData = data["beats"][index];
-
-			Beat* beat = new Beat {
-				beatData["channel"].get<int>(),
-				beatData["appearance"].get<double>(),
-				beatData["speed"].get<double>()
-			};
-			beats.push_back(beat);
-		}
-		Sheet* sheet = new Sheet {
-			data["name"].get<std::string>(),
-			data["time"].get<int>(),
-			beats
-		};
-		return sheet;
-	}
-};
 
 class GameScene : public Nacy::Scene
 {

@@ -12,9 +12,7 @@ public:
 		if (app == nullptr)
 		{
 			app = new Nacy::Application(
-				Nacy::Application::CreateGameWindow(
-					Nacy::WindowConfig("BeatBap", true, 1270, 800, true, false)
-				)
+				Nacy::WindowConfig("BeatBap", true, 1280, 720, true, true)
 			);
 		}
 		return app;

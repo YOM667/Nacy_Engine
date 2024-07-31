@@ -7,10 +7,12 @@ namespace Nacy
 	{
 	private:
 		SceneManager();
-		~SceneManager();
 		SceneManager(const SceneManager& signal) = delete;
 		const SceneManager& operator=(const SceneManager& signal) = delete;
+
+		static SceneManager* instance;
 	public:
+
 		NACY_API void Render(double delta);
 		NACY_API void Update(double delta);
 
@@ -20,10 +22,10 @@ namespace Nacy
 		
 		NACY_API void DisplayScene(Scene* scene);
 
-		NACY_API Scene* GetCurrentScene();
+		NACY_API int GetCurrentSceneID();
 		NACY_API Graphic* GetGraphic();
+
 	private:
-		static SceneManager* instance;
 
 		Vector2 size;
 		Graphic* graphic;

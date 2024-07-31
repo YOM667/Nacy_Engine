@@ -72,6 +72,12 @@
     <ClCompile Include="Sources\Nacy\Core\Event\Events\KeyEvent.hpp">
       <Filter>头文件</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Nacy\Manager\OpenGL\GLManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Nacy\Manager\Carema\Camera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Nacy\Core\Core.h">
@@ -156,6 +162,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Nacy\Object\Components\Game\DelayComponent.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Nacy\Core\Event\Events\WindowEvent.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Nacy\Manager\OpenGL\GLManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Nacy\Manager\Carema\Camera.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

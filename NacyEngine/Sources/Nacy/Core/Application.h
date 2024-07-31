@@ -1,9 +1,7 @@
 #pragma once
 
-#include "Nacy/Render/Graphic.hpp"
-#include "Nacy/Manager/Scene/Scene.h"
-
 #include "Nacy/Core/Event/Events/KeyEvent.hpp"
+#include "Nacy/Core/Event/Events/WindowEvent.hpp"
 #include "Nacy/Core/Event/Events/MouseEvent.hpp"
 #include "GameWindow.h"
 
@@ -30,16 +28,13 @@ namespace Nacy
 	{
 	public:
 		/* To load renderer shader and initialize graphic */
-		NACY_API Application(GameWindow* gameWindow);
-
-		NACY_API ~Application();
+		NACY_API Application(const WindowConfig& config);
 		/* To start the engine */
 		NACY_API void Start();
 		NACY_API void ShutDown();
 		//Get Application's field
-		NACY_API inline GameWindow* GetWindow();
+		NACY_API std::shared_ptr<GameWindow> GetWindow();
 		NACY_API inline int GetFPS();
-		NACY_API static GameWindow* CreateGameWindow(const WindowConfig& config);
 		//Application default field
 		bool running, loading;
 		int FPS;
@@ -50,11 +45,14 @@ namespace Nacy
 		bool OnKeyReleased(KeyReleasedEvent& event);
 		bool OnMouseButtonPressed(MouseButtonPressedEvent& event);
 		bool OnMouseMoving(MouseMovedEvent& event);
+		bool OnWindowResize(WindowResizeEvent& event);
+
+		void UpdateShader();
 
 		void Render(double delta);
 		void Update(double delta);
 
-		GameWindow* window;
+		std::shared_ptr<GameWindow> window;
 
 
 	};

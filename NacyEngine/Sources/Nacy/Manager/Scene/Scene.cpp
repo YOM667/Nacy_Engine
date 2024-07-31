@@ -52,14 +52,9 @@ namespace Nacy
 		this->screenHeight = screenHeight;
 	}
 
-	bool Scene::operator==(Scene& scene)
+	constexpr int Scene::GetID()
 	{
-		return this->id == scene.id;
-	}
-
-	bool Scene::operator!=(Scene& scene)
-	{
-		return this->id != scene.id;
+		return this->id;
 	}
 
 	void Scene::Render(double delta)

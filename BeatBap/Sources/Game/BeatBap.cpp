@@ -7,6 +7,7 @@ Nacy::Application* BeatBap::app = nullptr;
 void BeatBap::Init()
 {
 	auto app = GetApplication();
+	auto sceneManager = Nacy::SceneManager::GetInstance();
 	Nacy::ResourceManager::LoadTexture2D("Resources/Textures/Engine x Start!!.png", true, "music_background");
 	Nacy::ResourceManager::LoadTexture2D("Resources/Textures/click.png", true, "click");
 	Nacy::ResourceManager::LoadTexture2D("Resources/Textures/Engine x Start!!-logo.png", true, "logo");
@@ -23,7 +24,7 @@ void BeatBap::Init()
 
 	SoundEngine::GetInstance()->LoadSound("Engine x Start", Sound("Resources/Audio/CrossingSound - Engine x Start!! (melody mix).ogg", false));
 
-	Nacy::SceneManager::GetInstance()->DisplayScene(new SplashScene());
+	sceneManager->DisplayScene(new SplashScene());
 
 }
 
