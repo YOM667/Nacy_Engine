@@ -18,7 +18,8 @@ namespace Nacy
 		int keyCode;
 		KeyConflit conflit;
 		KeyActionFunc func;
-		NACY_API KeyBinding() : keyCode(0), conflit(KeyConflit::IN_ANYTHING), func(nullptr) {}
+		NACY_API KeyBinding() : keyCode(-1), conflit(KeyConflit::IN_ANYTHING), func(nullptr) {}
+		NACY_API KeyBinding(const KeyActionFunc& func) : keyCode(-1), conflit(KeyConflit::IN_ANYTHING), func(func) {}
 		NACY_API KeyBinding(int keyCode,const KeyConflit& conflit, const KeyActionFunc& func)
 			: keyCode(keyCode), conflit(conflit), func(func){}
 	};

@@ -27,6 +27,17 @@ public:
 		transform->position.y = 600;
 		text->AddComponent(new Nacy::TextLableComponent("---[ Press any key to start the game ]---","ditty",Nacy::RGBA(255.0f, 255.0f, 255.0f, 0.0f)));
 		this->AddGameObject("Text",text);
+
+		auto enter = Nacy::KeyBinding([this](auto action)
+			{
+				switch (action)
+				{
+				case Nacy::KeyActionType::KEY_PRESSED:
+					pressed = true;
+					break;
+				}
+			});
+		Nacy::InputManager::RegisterKeyBinding("enter", enter);
 	}
 
 	void Update(double delta) override

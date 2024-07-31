@@ -96,7 +96,7 @@ namespace Nacy
 		
 		GL::GLManager::CullFace();
 		GL::GLManager::StartBlend(NACY_GL_SRC_ALPHA, NACY_GL_ONE_MINUS_SRC_ALPHA,
-		[this,text,x,y,scale]() {
+		[this,text,x,y,scale,color]() {
 			int newX = x;
 			// activate corresponding render state	
 			this->renderer->GetShader().Use();

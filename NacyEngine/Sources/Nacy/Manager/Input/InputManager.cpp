@@ -15,7 +15,11 @@ namespace Nacy
 		for (auto& key : keybindingMap)
 		{
 			auto& keyBinding = key.second;
-			if (keyCode == keyBinding.keyCode)
+			if (keyBinding.keyCode == -1)
+			{
+				keyBinding.func(type);
+			}
+			else if (keyCode == keyBinding.keyCode)
 			{
 				keyBinding.func(type);
 			}

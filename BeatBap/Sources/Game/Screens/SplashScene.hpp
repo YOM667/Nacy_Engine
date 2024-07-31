@@ -41,7 +41,7 @@ public:
 	void Update(double delta)
 	{
 		auto time = GetNowTime();
-		auto finished = time - initTime >= 4000000000;
+		auto finished = time - initTime >= 3500000000;
 		if (finished)
 		{
 			Nacy::SceneManager::GetInstance()->DisplayScene(new MenuScene);
