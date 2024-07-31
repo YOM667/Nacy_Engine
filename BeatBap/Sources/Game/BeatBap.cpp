@@ -25,7 +25,17 @@ void BeatBap::Init()
 	SoundEngine::GetInstance()->LoadSound("Engine x Start", Sound("Resources/Audio/CrossingSound - Engine x Start!! (melody mix).ogg", false));
 
 	sceneManager->DisplayScene(new SplashScene());
-
+	
+	auto esc = Nacy::KeyBinding(256, Nacy::KeyConflit::IN_GAME, [app](auto action)
+		{
+			switch (action)
+			{
+			case Nacy::KeyActionType::KEY_PRESSED:
+				app->ShutDown();
+				break;
+			}
+		});
+	Nacy::InputManager::RegisterKeyBinding("exit", esc);
 }
 
 void BeatBap::Run()

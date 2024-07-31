@@ -1,7 +1,7 @@
 #include "pch.h"
 
 #include "Application.h"
-
+#include "Nacy/Manager/Input/InputManager.h"
 #include "Nacy/Manager/Assets/ResourceManager.h"
 #include "Nacy/Manager/Shader/Shader.h"
 #include "Nacy/Util/Utilities.h"
@@ -71,6 +71,7 @@ namespace Nacy
 	}
 	bool Application::OnKeyPressed(KeyPressedEvent& event)
 	{
+		InputManager::KeyAction(event.GetKeyCode(),KeyActionType::KEY_PRESSED);
 		//if (SceneManager::GetInstance()->GetCurrentSceneID() != -1)
 		//{
 		//	SceneManager::GetInstance()->GetCurrentScene()->KeyPressed(event.GetKeyCode());
@@ -80,6 +81,7 @@ namespace Nacy
 	}
 	bool Application::OnKeyReleased(KeyReleasedEvent& event)
 	{
+		InputManager::KeyAction(event.GetKeyCode(), KeyActionType::KEY_RELESED);
 		//if (scene != nullptr)
 		//{
 		//	//SceneManager::GetInstance()->GetCurrentScene()->KeyReleased(event.GetKeyCode());
@@ -189,7 +191,6 @@ namespace Nacy
 	void Application::Start()
 	{
 		running = true;
-
 		auto deltaTime = 0.0;
 		auto lastFrame = 0.0;
 		auto lastTime = Utility::GetNowTime();
@@ -241,7 +242,8 @@ namespace Nacy
 	}
 	void Application::ShutDown()
 	{
-		glfwTerminate();
+		this->running = false;
+		this->window->Destory();
 	}
 
 	void Application::Render(double delta)

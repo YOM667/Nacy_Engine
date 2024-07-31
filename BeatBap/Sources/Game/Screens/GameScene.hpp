@@ -12,10 +12,6 @@ public:
 		this->loader = new SheetLoader();
 		this->sheet = loader->Read();
 	}
-	~GameScene()
-	{
-		delete this->sheet;
-	}
 	//void KeyPressed(int keyCode) override
 	//{
 	//	if (keyCode == GLFW_KEY_ESCAPE)
@@ -39,13 +35,13 @@ public:
 			this->AddGameObject(name, line);
 		}
 		int index = 0;
-		for (auto beat : sheet->beats)
+		for (auto& beat : sheet.beats)
 		{
-			if (beat->channel >= 5)
+			if (beat.channel >= 5)
 			{
 				continue;
 			}
-			BeatObject* beatObject = new BeatObject(beat->channel - 1, beat->speed, sheet->time + beat->appearance * 1000000000.0);
+			BeatObject* beatObject = new BeatObject(beat.channel - 1, beat.speed, sheet.time + beat.appearance * 1000000000.0);
 			auto name = "Beat" + std::to_string(index);
 			this->AddGameObject(name, beatObject);
 			index++;
@@ -61,7 +57,7 @@ public:
 	}
 
 private:
-	Sheet* sheet;
+	Sheet sheet;
 	SheetLoader* loader;
 	bool running;
 	uint32_t score { 0 };

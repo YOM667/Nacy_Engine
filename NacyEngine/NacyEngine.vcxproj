@@ -149,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Nacy\Manager\Input\InputManager.cpp" />
     <ClCompile Include="Sources\Nacy\Manager\Carema\Camera.cpp" />
     <ClCompile Include="Sources\Nacy\Manager\OpenGL\GLManager.cpp" />
     <ClCompile Include="Sources\Nacy\Manager\Scene\SceneManager.cpp" />
@@ -175,6 +176,7 @@
     <ClCompile Include="Sources\Nacy\Math\Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\Nacy\Manager\Input\InputManager.h" />
     <ClInclude Include="Sources\Nacy\Manager\Carema\Camera.h" />
     <ClInclude Include="Sources\Nacy\Manager\OpenGL\GLManager.h" />
     <ClInclude Include="Sources\Nacy\Core\Event\Events\WindowEvent.hpp" />
