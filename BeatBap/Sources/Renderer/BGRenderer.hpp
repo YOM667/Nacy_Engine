@@ -27,7 +27,12 @@ public:
 		shader.SetFloat("alpha", alpha / 255.0f);
 		shader.SetFloat("iTime", static_cast<float>(Utility::GetGLFWTime()));
 		shader.SetVector2F("iResolution", glm::vec2(this->renderer->width, this->renderer->height));
-		renderer->Draw();
+
+		GL::GLManager::StartBlend([renderer]()
+			{
+				renderer->Draw();
+			});
+		
 	
 
 	}

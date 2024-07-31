@@ -18,6 +18,7 @@
 #include "Nacy/Manager/Scene/Scene.h"
 #include "Nacy/Manager/Carema/Camera.h"
 #include "Nacy/Manager/Input/InputManager.h"
+#include "Nacy/Manager/OpenGL/GLManager.h"
 
 #include "Nacy/Math/Vector.h"
 

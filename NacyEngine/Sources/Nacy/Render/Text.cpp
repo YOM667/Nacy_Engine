@@ -2,7 +2,7 @@
 
 #include "Text.h"
 #include "Nacy/Manager/Assets/ResourceManager.h"
-
+#include "Nacy/Manager/OpenGL/GLManager.h"
 namespace Nacy
 {
 	TextRenderer::TextRenderer() :
@@ -93,47 +93,46 @@ namespace Nacy
 
 	void TextRenderer::RenderText(std::string text, float x, float y, float scale, const RGBA& color)
 	{
-		glEnable(GL_CULL_FACE);
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		
+		GL::GLManager::CullFace();
+		GL::GLManager::StartBlend(NACY_GL_SRC_ALPHA, NACY_GL_ONE_MINUS_SRC_ALPHA,
+		[this,text,x,y,scale]() {
+			int newX = x;
+			// activate corresponding render state	
+			this->renderer->GetShader().Use();
+			this->renderer->GetShader().SetVector4F("textColor", glm::vec4(color.red / 255.0f, color.green / 255.0f, color.blue / 255.0f, color.alpha / 255.0f));
 
-		// activate corresponding render state	
-		this->renderer->GetShader().Use();
-		this->renderer->GetShader().SetVector4F("textColor", glm::vec4(color.red / 255.0f, color.green / 255.0f, color.blue / 255.0f, color.alpha / 255.0f));
+			// iterate through all characters
+			std::string::const_iterator c;
+			for (c = text.begin(); c != text.end(); c++)
+			{
+				glActiveTexture(GL_TEXTURE0);
+				Character ch = characters[*c];
 
-		// iterate through all characters
-		std::string::const_iterator c;
-		for (c = text.begin(); c != text.end(); c++)
-		{
-			glActiveTexture(GL_TEXTURE0);
-			Character ch = characters[*c];
+				float xpos = newX + ch.Bearing.x * scale;
+				float ypos = y + (this->characters['H'].Bearing.y - ch.Bearing.y) * scale;
 
-			float xpos = x + ch.Bearing.x * scale;
-			float ypos = y + (this->characters['H'].Bearing.y - ch.Bearing.y) * scale;
+				float w = ch.Size.x * scale;
+				float h = ch.Size.y * scale;
+				glm::mat4 transform(1.0f);
+				// update VBO for each character
+				transform = glm::translate(transform, glm::vec3(glm::vec2(xpos, ypos), 0.0f));
+				transform = glm::scale(transform, glm::vec3(w, h, 1.0f));
 
-			float w = ch.Size.x * scale;
-			float h = ch.Size.y * scale;
-			glm::mat4 transform(1.0f);
-			// update VBO for each character
-			transform = glm::translate(transform, glm::vec3(glm::vec2(xpos, ypos), 0.0f));
-			transform = glm::scale(transform, glm::vec3(w, h, 1.0f));
+				this->renderer->GetShader().SetMatrix4F("transform", transform);
 
-			this->renderer->GetShader().SetMatrix4F("transform", transform);
+				glBindTexture(GL_TEXTURE_2D, ch.TextureID);
 
-			glBindTexture(GL_TEXTURE_2D, ch.TextureID);
+				glBindVertexArray(this->renderer->GetVAO());
+				glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+				glBindVertexArray(0);
 
-			glBindVertexArray(this->renderer->GetVAO());
-			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+				newX += (ch.Advance >> 6) * scale;
+			}
 			glBindVertexArray(0);
-
-			x += (ch.Advance >> 6) * scale;
-		}
-
-		glBindVertexArray(0);
-		glBindTexture(GL_TEXTURE_2D, 0);
-
-		glDisable(GL_BLEND);
-		glDisable(GL_CULL_FACE);
+			glBindTexture(GL_TEXTURE_2D, 0);
+		});
+		GL::GLManager::DisableCullFace();
 	}
 	void TextRenderer::RenderCenterdText(std::string text, float x, float y, float scale, const RGBA& color)
 	{

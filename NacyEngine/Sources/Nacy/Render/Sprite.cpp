@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Sprite.h"
-
+#include "Nacy/Manager/OpenGL/GLManager.h"
 #include "Nacy/Manager/Assets/ResourceManager.h"
 namespace Nacy
 {
@@ -21,9 +21,6 @@ namespace Nacy
 
 	void SpriteRenderer::DrawSprite(Texture2D& texture, float x, float y, float width, float height, const RGBA& color)
 	{
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
 		glm::mat4 transform(1.0f);
 		this->spriteRenderer->GetShader().Use();
 		transform = glm::translate(transform, glm::vec3(x, y, 0.0f));
@@ -31,22 +28,20 @@ namespace Nacy
 		this->spriteRenderer->GetShader().SetMatrix4F("transform", transform);
 		this->spriteRenderer->GetShader().SetVector4F("spriteColor", glm::vec4(color.red / 255.0f, color.green / 255.0f, color.blue / 255.0f, color.alpha / 255.0f));
 
-		glActiveTexture(GL_TEXTURE0);
-		texture.Bind();
-		glBindVertexArray(this->spriteRenderer->GetVAO());
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-		glBindVertexArray(0);
-		glBindTexture(GL_TEXTURE_2D, 0);
-		glDisable(GL_BLEND);
-
+		GL::GLManager::StartBlend(NACY_GL_SRC_ALPHA, NACY_GL_ONE_MINUS_SRC_ALPHA,
+		[texture,this](){
+			glActiveTexture(GL_TEXTURE0);
+			texture.Bind();
+			glBindVertexArray(this->spriteRenderer->GetVAO());
+			glDrawElements(NACY_GL_TRIANGLES, 6, NACY_GL_UNSIGNED_INT, 0);
+			glBindVertexArray(0);
+			glBindTexture(NACY_GL_TEXTURE_2D, 0);
+		});
 
 	}
 
 	void SpriteRenderer::DrawRoundedSprite(Texture2D& texture, float x, float y, float width, float height, float radius, float scale, const RGBA& color)
 	{
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
 		glm::mat4 transform(1.0f);
 		this->spriteRoundRenderer->GetShader().Use();
 		transform = glm::translate(transform, glm::vec3(x, y, 0.0f));
@@ -59,18 +54,22 @@ namespace Nacy
 
 
 		this->spriteRoundRenderer->GetShader().SetMatrix4F("transform", transform);
-		this->spriteRoundRenderer->GetShader().SetVector3F("spriteColor", glm::vec3(color.red / 255.0f, color.green / 255.0f,color.blue / 255.0f));
-		this->spriteRoundRenderer->GetShader().SetVector2F("size", glm::vec2(width,height));
+		this->spriteRoundRenderer->GetShader().SetVector3F("spriteColor", glm::vec3(color.red / 255.0f, color.green / 255.0f, color.blue / 255.0f));
+		this->spriteRoundRenderer->GetShader().SetVector2F("size", glm::vec2(width, height));
 		this->spriteRoundRenderer->GetShader().SetFloat("alpha", color.alpha / 255.0f);
 		this->spriteRoundRenderer->GetShader().SetFloat("radius", radius);
 
-		glActiveTexture(GL_TEXTURE0);
-		texture.Bind();
-		glBindVertexArray(this->spriteRoundRenderer->GetVAO());
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-		glBindVertexArray(0);
-		glBindTexture(GL_TEXTURE_2D, 0);
-		glDisable(GL_BLEND);
+		GL::GLManager::StartBlend(NACY_GL_SRC_ALPHA, NACY_GL_ONE_MINUS_SRC_ALPHA,
+		[texture, this]() {
+			glActiveTexture(GL_TEXTURE0);
+			texture.Bind();
+			glBindVertexArray(this->spriteRoundRenderer->GetVAO());
+			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+			glBindVertexArray(0);
+			glBindTexture(GL_TEXTURE_2D, 0);
+		});
+
+
 	}
 	
 }
