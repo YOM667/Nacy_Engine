@@ -46,6 +46,7 @@ public:
 		{
 			alpha = this->animator->GetPoint(delta);
 		}
+		this->GetGameObject("Text")->GetComponent<Nacy::TextLableComponent>()->color.alpha = alpha;
 		if (pressed)
 		{
 			if (this->animator->GetDirection() != Utility::Direction::BACK)
@@ -62,7 +63,7 @@ public:
 				Nacy::SceneManager::GetInstance()->DisplayScene(new SelectedScene());
 			}
 		}
-		this->GetGameObject("Text")->GetComponent<Nacy::TextLableComponent>()->color.alpha = alpha;
+		
 		//TODO keypressed 
 	}
 private:

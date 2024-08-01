@@ -11,7 +11,7 @@ public:
 		transform->position.y = 0.0f;
 		transform->size.x = 2.0f;
 		transform->size.y = 1270.0f;
-		this->AddComponent(new Nacy::ShapeComponent(Nacy::RGBA(92.0f, 92.0f, 92.0f, 255.0f), Nacy::ShapeType::Rectangle));
+		this->AddComponent(new Nacy::ShapeComponent(Nacy::RGBA(92.0f, 92.0f, 92.0f, 255.0f), Nacy::ShapeType::RECTANGLE));
 	}
 };
 class CheckLineNode : public Nacy::GameObject
@@ -24,7 +24,7 @@ public:
 		transform->position.y = 600.0f;
 		transform->size.x = 200.0f;
 		transform->size.y = 5.0f;
-		this->AddComponent(new Nacy::ShapeComponent(Nacy::RGBA(255.0f), Nacy::ShapeType::RoundRectangle));
+		this->AddComponent(new Nacy::ShapeComponent(Nacy::RGBA(255.0f), Nacy::ShapeType::ROUND_RECTANGLE));
 	}
 };
 class BeatObject : public Nacy::GameObject
