@@ -28,6 +28,7 @@ namespace Nacy
 	private:
 		static std::map<const char*, KeyBinding> keybindingMap;
 	public:
+		NACY_API static float mouseX, mouseY;
 		NACY_API static void RegisterKeyBinding(const char* name, const KeyBinding& keyBinding);
 		NACY_API static void KeyAction(int keyCode, const KeyActionType& type);
 

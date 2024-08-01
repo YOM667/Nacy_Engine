@@ -4,7 +4,8 @@
 namespace Nacy
 {
 	std::map<const char*, KeyBinding> InputManager::keybindingMap = std::map<const char*, KeyBinding>() = {};
-
+	float InputManager::mouseX = 0.0f;
+	float InputManager::mouseY = 0.0f;
 
 	void InputManager::RegisterKeyBinding(const char* name, const KeyBinding& keyBinding)
 	{

@@ -51,7 +51,13 @@ namespace Nacy
 		this->screenWidth = screenWidth;
 		this->screenHeight = screenHeight;
 	}
-
+	bool Scene::isHovered(TransformComponent* component, float mouseX, float mouseY)
+	{
+		return (mouseX >= component->position.x 
+			&& mouseY >= component->position.y 
+			&& mouseX <= component->position.x + component->size.x 
+			&& mouseY <= component->position.y + component->size.y);
+	}
 	constexpr int Scene::GetID()
 	{
 		return this->id;
@@ -76,7 +82,7 @@ namespace Nacy
 			{
 				switch (shape->shapeType)
 				{
-				case ShapeType::Rectangle:
+				case ShapeType::RECTANGLE:
 
 					shapeRender->DrawRoundedRect(transform->position.x, 
 						transform->position.y,
@@ -86,7 +92,7 @@ namespace Nacy
 						shape->color,
 					1.0f);
 					break;
-				case ShapeType::RoundRectangle:
+				case ShapeType::ROUND_RECTANGLE:
 					shapeRender->DrawRect(transform->position.x,
 						transform->position.y,
 						transform->size.x,
@@ -98,11 +104,23 @@ namespace Nacy
 			}
 			if (sprite != nullptr)
 			{
-				
-				spriteRender->DrawSprite(sprite->texture,
-					transform->position.x, transform->position.y,
-					transform->size.x, transform->size.y,
-					sprite->color);
+				switch (sprite->spriteType)
+				{
+				case SpriteType::NORMAL:
+					spriteRender->DrawSprite(sprite->texture,
+						transform->position.x, transform->position.y,
+						transform->size.x, transform->size.y,
+						sprite->color);
+					break;
+				case SpriteType::ROUND:
+					spriteRender->DrawRoundedSprite(sprite->texture,
+						transform->position.x, transform->position.y,
+						transform->size.x, transform->size.y,
+						sprite->radius,
+						transform->scale,
+						sprite->color);
+				}
+
 			}
 			if (text != nullptr)
 			{

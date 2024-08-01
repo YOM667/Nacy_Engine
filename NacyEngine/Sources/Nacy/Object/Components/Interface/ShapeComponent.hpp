@@ -8,14 +8,14 @@ namespace Nacy
 {
 	enum class NACY_API ShapeType
 	{
-		RoundRectangle = 0, Rectangle, Circle, Triangle
+		ROUND_RECTANGLE = 0, RECTANGLE, CIRCLE, TRIANGLE
 	};
 	struct ShapeComponent : public Component
 	{
 		ShapeType shapeType;
 		RGBA color;
 		float radius;
-		NACY_API ShapeComponent(const RGBA& color, ShapeType shapeType, float radius = 0.0f) 
+		NACY_API ShapeComponent(const RGBA& color, ShapeType shapeType = ShapeType::RECTANGLE, float radius = 0.0f) 
 			: color(color), shapeType(shapeType) , radius(radius){}
 
 		NACY_API static std::string GetStaticType()

@@ -2,7 +2,7 @@
 
 #include "Nacy/Object/GameObject.h"
 #include "Nacy/Render/Graphic.hpp"
-
+#include "Nacy/Object/Components/Game/TransformComponent.hpp"
 namespace Nacy
 {
 	class Scene
@@ -27,6 +27,8 @@ namespace Nacy
 		NACY_API void SetWindowSize(float screenWidth, float screenHeight);
 
 		NACY_API constexpr int GetID();
+
+		NACY_API bool isHovered(TransformComponent* component, float mouseX, float mouseY);
 	protected:
 		Graphic* graphic;
 		float screenWidth, screenHeight;

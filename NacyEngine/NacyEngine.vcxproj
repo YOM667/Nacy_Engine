@@ -112,7 +112,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NACY_PLATFORM_WINDOW;NACY_BUILD_DLL;MAPLE_BUILD_DLL_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>Sources;Sources;$(SolutionDir)NacyEngine\Dependencies\STB;$(SolutionDir)NacyEngine\Dependencies\GLM\include;$(SolutionDir)NacyEngine\Dependencies\FreeType\include;$(SolutionDir)NacyEngine\Dependencies\GLFW\include;$(SolutionDir)NacyEngine\Dependencies\GLEW\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Sources;$(SolutionDir)NacyEngine\Dependencies\Imgui;$(SolutionDir)NacyEngine\Dependencies\STB;$(SolutionDir)NacyEngine\Dependencies\GLM\include;$(SolutionDir)NacyEngine\Dependencies\FreeType\include;$(SolutionDir)NacyEngine\Dependencies\GLFW\include;$(SolutionDir)NacyEngine\Dependencies\GLEW\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -133,7 +133,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NACY_PLATFORM_WINDOW;NACY_BUILD_DLL;MAPLE_BUILD_DLLNDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>Sources;Sources;$(SolutionDir)NacyEngine\Dependencies\STB;$(SolutionDir)NacyEngine\Dependencies\GLM\include;$(SolutionDir)NacyEngine\Dependencies\FreeType\include;$(SolutionDir)NacyEngine\Dependencies\GLFW\include;$(SolutionDir)NacyEngine\Dependencies\GLEW\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Sources;$(SolutionDir)NacyEngine\Dependencies\Imgui;$(SolutionDir)NacyEngine\Dependencies\STB;$(SolutionDir)NacyEngine\Dependencies\GLM\include;$(SolutionDir)NacyEngine\Dependencies\FreeType\include;$(SolutionDir)NacyEngine\Dependencies\GLFW\include;$(SolutionDir)NacyEngine\Dependencies\GLEW\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>

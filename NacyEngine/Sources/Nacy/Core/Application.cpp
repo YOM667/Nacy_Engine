@@ -100,6 +100,8 @@ namespace Nacy
 	}
 	bool Application::OnMouseMoving(MouseMovedEvent& event)
 	{
+		InputManager::mouseX = event.GetX();
+		InputManager::mouseY = event.GetY();
 		//if (scene != nullptr)
 		//{
 		//	//SceneManager::GetInstance()->GetCurrentScene()->MouseMoving(event.GetX(), event.GetY());
