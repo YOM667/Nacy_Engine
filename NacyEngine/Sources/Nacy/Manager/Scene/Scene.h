@@ -14,6 +14,7 @@ namespace Nacy
 		NACY_API virtual void Update(double delta) {};
 		NACY_API virtual void DrawBackground() {};
 
+		NACY_API virtual void OnMouseButton(int button) {};
 
 		NACY_API void Render(double delta);
 		NACY_API void Exit();

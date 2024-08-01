@@ -56,6 +56,16 @@ public:
 		}
 		transform->scale = this->scale / 100.0f;
 	}
+	void OnMouseButton(int button) override
+	{
+		auto transform = this->GetGameObject("Sheet")->GetComponent<Nacy::TransformComponent>();
+		auto mouseX = Nacy::InputManager::mouseX;
+		auto mouseY = Nacy::InputManager::mouseY;
+		if (this->isHovered(transform, mouseX,mouseY) && button == Nacy::LEFT_BUTTON)
+		{
+			Nacy::SceneManager::GetInstance()->DisplayScene(new GameScene);
+		}
+	}
 private:
 	bool playHover = false;
 	bool isScale;

@@ -90,12 +90,9 @@ namespace Nacy
 	}
 	bool Application::OnMouseButtonPressed(MouseButtonPressedEvent& event)
 	{
-
-		//if (scene != nullptr)
-		//{
-		//	//SceneManager::GetInstance()->GetCurrentScene()->MouseButtonPressed(event.GetMouseButton());
-		//}
-
+		auto scene = SceneManager::GetInstance()->GetCurrentScene();
+		if(scene != nullptr)
+			scene->OnMouseButton(event.GetMouseButton());
 		return true;
 	}
 	bool Application::OnMouseMoving(MouseMovedEvent& event)

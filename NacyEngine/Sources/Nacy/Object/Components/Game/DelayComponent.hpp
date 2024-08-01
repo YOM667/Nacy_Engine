@@ -3,10 +3,10 @@
 #include "Nacy/Object/Components/Component.hpp"
 namespace Nacy
 {
-	struct DelayComponent : public Component
+	struct NACY_API DelayComponent : public Component
 	{
 		uint64_t delayTime;
-		NACY_API DelayComponent(uint64_t delayTime) : delayTime(delayTime) {}
+		DelayComponent(uint64_t delayTime) : delayTime(delayTime) {}
 
 		static std::string GetStaticType()
 		{

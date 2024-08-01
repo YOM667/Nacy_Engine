@@ -3,6 +3,9 @@
 
 namespace Nacy
 {
+	const int LEFT_BUTTON = GLFW_MOUSE_BUTTON_1;
+	const int RIGHT_BUTTON = GLFW_MOUSE_BUTTON_2;
+
 	enum class NACY_API KeyConflit
 	{
 		IN_SCENE, IN_GAME, IN_ANYTHING

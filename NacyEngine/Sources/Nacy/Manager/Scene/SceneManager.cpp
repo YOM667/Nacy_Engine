@@ -67,6 +67,10 @@ namespace Nacy
 	{
 		return this->scene->GetID();
 	}
+	Scene* SceneManager::GetCurrentScene()
+	{
+		return this->scene;
+	}
 	Graphic* SceneManager::GetGraphic()
 	{
 		return this->graphic;

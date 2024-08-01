@@ -9,7 +9,7 @@ public:
 		auto transform = this->GetComponent<Nacy::TransformComponent>();
 		transform->position.x = 220.0f + index * 210.0f;
 		transform->position.y = 0.0f;
-		transform->size.x = 2.0f;
+		transform->size.x = 4.0f;
 		transform->size.y = 1270.0f;
 		this->AddComponent(new Nacy::ShapeComponent(Nacy::RGBA(92.0f, 92.0f, 92.0f, 255.0f), Nacy::ShapeType::RECTANGLE));
 	}
@@ -40,7 +40,7 @@ public:
 		transform->size.x = 190.0f;
 		transform->size.y = 20.0f;
 		this->AddComponent(new Nacy::SpriteComponent(click));
-		this->AddComponent(new Nacy::DelayComponent(delay));
+		//this->AddComponent(new Nacy::DelayComponent(delay));
 	}
 private:
 	Nacy::Texture2D texture;

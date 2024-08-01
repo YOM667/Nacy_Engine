@@ -53,7 +53,7 @@ public:
 	void DrawBackground() override
 	{
 		this->graphic->sprite->DrawSprite(texture, 0, 0, this->screenWidth, this->screenHeight);
-		this->graphic->shape->DrawRect(0, 0, this->screenWidth, this->screenHeight, Nacy::RGBA(0.0f, 0.0f, 0.0f, 0.7f), 1.0f);
+		this->graphic->shape->DrawRect(0, 0, this->screenWidth, this->screenHeight, Nacy::RGBA(0.0f, 0.0f, 0.0f, 150.0f), 1.0f);
 	}
 
 private:
