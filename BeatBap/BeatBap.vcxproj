@@ -157,12 +157,13 @@
     <ClCompile Include="Sources\Game\Screens\GameScene.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\Game\Screens\SettingScene.hpp" />
     <ClInclude Include="Sources\Game\Loader\SheetManager.h" />
     <ClInclude Include="Sources\Game\Screens\SplashScene.hpp" />
     <ClInclude Include="Sources\SoundEngine\SoundEngine.h" />
     <ClInclude Include="Sources\Game\Screens\Objects\Objects.hpp" />
     <ClInclude Include="Sources\Game\Screens\SelectedScene.hpp" />
-    <ClInclude Include="Sources\Renderer\BGRenderer.hpp" />
+    <ClInclude Include="Sources\Game\Renderer\BGRenderer.hpp" />
     <ClInclude Include="Sources\Game\BeatBap.h" />
     <ClInclude Include="Sources\Game\Screens\MenuScene.hpp" />
   </ItemGroup>

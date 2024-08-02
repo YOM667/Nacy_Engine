@@ -13,19 +13,19 @@ namespace Nacy
 		NACY_API virtual void Init() {};
 		NACY_API virtual void Update(double delta) {};
 		NACY_API virtual void DrawBackground() {};
-
+		NACY_API virtual void DrawHUD() {};
 		NACY_API virtual void OnMouseButton(int button) {};
 
 		NACY_API void Render(double delta);
 		NACY_API void Exit();
-
+		NACY_API void Clear();
 
 		NACY_API void AddGameObject(const std::string& name, GameObject* node);
 		NACY_API void RemoveGameObject(const std::string& name);
 		NACY_API GameObject* GetGameObject(const std::string& name);
 
 		NACY_API void SetGraphic(Graphic* graphic);
-		NACY_API void SetWindowSize(float screenWidth, float screenHeight);
+		NACY_API void SetWindowSize(float width, float height);
 
 		NACY_API constexpr int GetID();
 

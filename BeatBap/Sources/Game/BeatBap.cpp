@@ -11,6 +11,8 @@ void BeatBap::Init()
 	Nacy::ResourceManager::LoadTexture2D("Resources/Textures/Engine x Start!!.png", true, "music_background");
 	Nacy::ResourceManager::LoadTexture2D("Resources/Textures/click.png", true, "click");
 	Nacy::ResourceManager::LoadTexture2D("Resources/Textures/Engine x Start!!-logo.png", true, "logo");
+	Nacy::ResourceManager::LoadTexture2D("Resources/Textures/setting.png", true, "setting");
+	Nacy::ResourceManager::LoadTexture2D("Resources/Textures/back.png", true, "back");
 
 	Nacy::ResourceManager::LoadFont("Resources/Fonts/CoffeeHealing-1GrKe.ttf", 64, "coffee");
 	Nacy::ResourceManager::LoadFont("Resources/Fonts/CoffeeHealing-1GrKe.ttf", 28, "little_coffee");

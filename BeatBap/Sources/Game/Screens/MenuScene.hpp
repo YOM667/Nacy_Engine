@@ -1,11 +1,13 @@
 #pragma once
 #include <NacyEngine.h>
 #include "SoundEngine/SoundEngine.h"
-#include "Renderer/BGRenderer.hpp"
+#include "Game/Renderer/BGRenderer.hpp"
 #include "SelectedScene.hpp"
+#include "Game/BeatBap.h"
 class MenuScene : public Nacy::Scene
 {
 public:
+	bool enter = true;
 	MenuScene()
 		: Scene(2), pressed(false), alpha(0.0)
 	{
@@ -14,20 +16,30 @@ public:
 	}
 	void DrawBackground() override
 	{
-		this->background->Draw(0,0, this->screenWidth, this->screenHeight, this->alpha);
+		this->background->Draw(0, 0, this->screenWidth, this->screenHeight, this->alpha);
 	}
+	void Enter()
+	{
+		
+		if (enter)
+		{
+			SoundEngine::GetInstance()->NPlaySound("music");
+			enter = false;
+		}
 
+			
+	}
 	void Init() override
 	{
-		SoundEngine::GetInstance()->NPlaySound("music");
-
+		this->Clear();
+		this->Enter();
 		auto text = new Nacy::GameObject("Text");
 		auto transform = text->GetComponent<Nacy::TransformComponent>();
 		transform->position.x = screenWidth / 2.0f;
-		transform->position.y = 600;
+		transform->position.y = screenHeight - 100;
 		text->AddComponent(new Nacy::TextLableComponent("---[ Press any key to start the game ]---","ditty",Nacy::RGBA(255.0f, 255.0f, 255.0f, 0.0f)));
-		this->AddGameObject("Text",text);
-
+		this->AddGameObject("Text", text);
+		this->background->SetProjection();
 		auto enter = Nacy::KeyBinding([this](auto action)
 			{
 				switch (action)

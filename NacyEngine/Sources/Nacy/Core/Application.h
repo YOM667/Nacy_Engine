@@ -47,8 +47,6 @@ namespace Nacy
 		bool OnMouseMoving(MouseMovedEvent& event);
 		bool OnWindowResize(WindowResizeEvent& event);
 
-		void UpdateShader();
-
 		void Render(double delta);
 		void Update(double delta);
 

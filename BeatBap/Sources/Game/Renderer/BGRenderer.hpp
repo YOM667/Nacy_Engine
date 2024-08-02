@@ -15,6 +15,10 @@ public:
 			delete this->renderer;
 		}
 	}
+	void SetProjection()
+	{
+		this->renderer->GetShader().SetMatrix4F("projection", glm::ortho(0.0f,this->renderer->width,this->renderer->height,0.0f));
+	}
 	void Draw(float x, float y, float width, float height, float alpha)
 	{
 		renderer->x = x;
@@ -26,7 +30,7 @@ public:
 		shader.Use();
 		shader.SetFloat("alpha", alpha / 255.0f);
 		shader.SetFloat("iTime", static_cast<float>(Utility::GetGLFWTime()));
-		shader.SetVector2F("iResolution", glm::vec2(this->renderer->width, this->renderer->height));
+		shader.SetVector2F("iResolution", glm::vec2(this->renderer->width / 2.0f, this->renderer->height/2.0f));
 		renderer->Draw();
 	}
 };

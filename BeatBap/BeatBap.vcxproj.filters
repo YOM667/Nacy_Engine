@@ -38,7 +38,7 @@
     <ClInclude Include="Sources\Game\BeatBap.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Renderer\BGRenderer.hpp">
+    <ClInclude Include="Sources\Game\Renderer\BGRenderer.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Game\Screens\SelectedScene.hpp">
@@ -54,6 +54,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Game\Loader\SheetManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Game\Screens\SettingScene.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

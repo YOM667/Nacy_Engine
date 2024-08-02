@@ -210,9 +210,9 @@ namespace Nacy
 	{
 		return this->projection;
 	}
-	void GameWindow::SetNewProjection(const glm::mat4& projection)
+	void GameWindow::UpdateProjection()
 	{
-		this->projection = projection;
+		this->projection = glm::ortho(0.0f, this->GetWidth(), this->GetHeight(), 0.0f);
 	}
 	inline void GameWindow::setEventCallback(const EventCallbackFn& callback)
 	{

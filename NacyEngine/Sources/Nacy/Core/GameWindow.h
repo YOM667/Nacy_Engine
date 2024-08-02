@@ -88,7 +88,7 @@ namespace Nacy
 		NACY_API void SetHeight(float height);
 
 		NACY_API inline glm::mat4 GetProjection();
-		NACY_API void SetNewProjection(const glm::mat4& projection);
+		NACY_API void UpdateProjection();
 		NACY_API void setEventCallback(const EventCallbackFn& callback);
 	private:
 		//Initialise glfw and glew. Load WindowConfigs

@@ -38,6 +38,11 @@ namespace Nacy
 
 	void Scene::Exit()
 	{
+		this->Clear();
+	}
+
+	void Scene::Clear()
+	{
 		this->objects.clear();
 	}
 
@@ -46,10 +51,10 @@ namespace Nacy
 		this->graphic = graphic;
 	}
 
-	void Scene::SetWindowSize(float screenWidth, float screenHeight)
+	void Scene::SetWindowSize(float width, float height)
 	{
-		this->screenWidth = screenWidth;
-		this->screenHeight = screenHeight;
+		this->screenWidth = width;
+		this->screenHeight = height;
 	}
 	bool Scene::isHovered(TransformComponent* component, float mouseX, float mouseY)
 	{

@@ -11,7 +11,8 @@
 namespace Nacy
 {
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
-
+	static int lowerLeftCorner = 0;
+	static int lowerTopCorner = 0;
 	static bool windowCreated = false;
 	Application::Application(const WindowConfig& windowConfig)
 		: running(false), FPS(0), loading(true)
@@ -55,6 +56,7 @@ namespace Nacy
 
 		Info("Loading engine ttf font");
 		ResourceManager::LoadFont("NacyRes/Comici.ttf", 64, "comici");
+		ResourceManager::LoadFont("NacyRes/Comici.ttf", 20, "comici_20");
 		Info("Set engine event handlers");
 		this->window->setEventCallback(BIND_EVENT_FN(OnEvent));
 
@@ -99,92 +101,52 @@ namespace Nacy
 	{
 		InputManager::mouseX = event.GetX();
 		InputManager::mouseY = event.GetY();
+		if (lowerLeftCorner != 0)
+		{
+			InputManager::mouseX = event.GetX() + lowerLeftCorner;
+		}
+		if (lowerTopCorner != 0)
+		{
+			InputManager::mouseY = event.GetY() + lowerTopCorner;
+		}
+
 		//if (scene != nullptr)
 		//{
 		//	//SceneManager::GetInstance()->GetCurrentScene()->MouseMoving(event.GetX(), event.GetY());
 		//}
 		return true;
 	}
+	void UpdateShader(glm::mat4 projection)
+	{
+		ResourceManager::GetShader("textureShader").
+			UseShader()
+			.SetMatrix4F("projection", projection);
+		ResourceManager::GetShader("textShader")
+			.UseShader()
+			.SetMatrix4F("projection", projection);
+		ResourceManager::GetShader("roundTextureShader")
+			.UseShader()
+			.SetMatrix4F("projection", projection);
+		ResourceManager::GetShader("rectShader")
+			.UseShader()
+			.SetMatrix4F("projection", projection);
+		ResourceManager::GetShader("roundedRectOutlineShader")
+			.UseShader()
+			.SetMatrix4F("projection", projection);
+		ResourceManager::GetShader("roundedRectShader")
+			.UseShader()
+			.SetMatrix4F("projection", projection);
+	}
 	bool Application::OnWindowResize(WindowResizeEvent& event)
 	{
-
-		float desiredAspectRatio = 1280.0f / 720.0f;
-
-		int widthOfViewport{}, heightOfViewport{};
-		// These are two new values that we will be calculating in this function
-		int lowerLeftCornerOfViewportX{}, lowerLeftCornerOfViewportY{};
-
-		float requiredHeightOfViewport = event.GetWidth() * (1.0f / desiredAspectRatio);
-		if (requiredHeightOfViewport > event.GetHeight())
-		{
-			float requiredWidthOfViewport = event.GetHeight() * desiredAspectRatio;
-			if (requiredWidthOfViewport > event.GetWidth())
-			{
-				std::cout << "Error: Couldn't find dimensions that preserve the aspect ratio\n";
-			}
-			else
-			{
-				// Remember that if we reach this point you will observe vertical bars
-				// on the left and right
-				widthOfViewport = static_cast<int>(requiredWidthOfViewport);
-				heightOfViewport = event.GetHeight();
-
-				// The widths of the two vertical bars added together are equal to the
-				// difference between the width of the framebuffer and the width of the viewport
-				float widthOfTheTwoVerticalBars = event.GetWidth() - widthOfViewport;
-
-				// Set the X position of the lower left corner of the viewport equal to the
-				// width of one of the vertical bars. By doing this, we center the viewport
-				// horizontally and we make vertical bars appear on the left and right
-				lowerLeftCornerOfViewportX = static_cast<int>(widthOfTheTwoVerticalBars / 2.0f);
-				// We don't need to center the viewport vertically because we are using the
-				// height of the framebuffer as the height of the viewport
-				lowerLeftCornerOfViewportY = 0;
-			}
-		}
-		else
-		{
-			// Remember that if we reach this point you will observe horizontal bars
-			// on the top and bottom
-			widthOfViewport = event.GetWidth();
-			heightOfViewport = static_cast<int>(requiredHeightOfViewport);
-
-			// The heights of the two horizontal bars added together are equal to the difference
-			// between the height of the framebuffer and the height of the viewport
-			float heightOfTheTwoHorizontalBars = event.GetHeight() - heightOfViewport;
-
-			// We don't need to center the viewport horizontally because we are using the
-			// width of the framebuffer as the width of the viewport
-			lowerLeftCornerOfViewportX = 0;
-			// Set the Y position of the lower left corner of the viewport equal to the
-			// height of one of the vertical bars. By doing this, we center the viewport
-			// vertically and we make horizontal bars appear on the top and bottom
-			lowerLeftCornerOfViewportY = static_cast<int>(heightOfTheTwoHorizontalBars / 2.0f);
-		}
-
-		// Call glViewport to specify the new drawing area
-		// By specifying its lower left corner, we center it
-		glViewport(lowerLeftCornerOfViewportX, lowerLeftCornerOfViewportY,
-			widthOfViewport, heightOfViewport);
-		this->window->SetWidth(event.GetWidth());
-		this->window->SetHeight(event.GetHeight());
-
-		//SceneManager::GetInstance()->SetWindowSize(Vector2(this->window->GetWidth(), this->window->GetHeight()));
-		return true;
-		/*auto aspect = event.GetWidth() / event.GetHeight();
 		glViewport(0, 0, event.GetWidth(), event.GetHeight());
-		glm::mat4 ortho(1.0f);
-		if (aspect >= 1.0f)
-			ortho = glm::ortho(0.0f * aspect, 1270.0f * aspect,800.0f,0.0f,1.0f,-1.0f);
-		else
-			ortho = glm::ortho(0.0f, 1270.0f, 800.0f / aspect, 0.0f / aspect, 1.0f, -1.0f);
-
-		this->window->SetNewProjection(ortho);
 		this->window->SetWidth(event.GetWidth());
 		this->window->SetHeight(event.GetHeight());
-		
-		this->UpdateShader();
-		return true;*/
+		this->window->UpdateProjection();
+		UpdateShader(this->window->GetProjection());
+		SceneManager::GetInstance()->Resize(event.GetWidth(), event.GetHeight());
+	
+		return true;
 	}
 
 	void Application::Start()

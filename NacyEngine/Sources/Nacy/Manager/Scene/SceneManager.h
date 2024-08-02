@@ -15,7 +15,7 @@ namespace Nacy
 
 		NACY_API void Render(double delta);
 		NACY_API void Update(double delta);
-		NACY_API void OnInput();
+		NACY_API void Resize(int width, int height);
 		NACY_API void SetWindowSize(const Vector2& size);
 
 		NACY_API static SceneManager* GetInstance();

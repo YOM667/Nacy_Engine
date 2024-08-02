@@ -26,6 +26,13 @@ namespace Nacy
 		this->scene->Update(delta);
 	}
 
+	void SceneManager::Resize(int width, int height)
+	{
+		this->scene->SetWindowSize(static_cast<float>(width),static_cast<float>(height));
+		this->scene->Init();
+
+	}
+
 	void SceneManager::SetWindowSize(const Vector2& size)
 	{
 		this->size = size;

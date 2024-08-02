@@ -1,32 +1,51 @@
 #pragma once
 #include <NacyEngine.h>
 #include "GameScene.hpp"
-
+#include "SettingScene.hpp"
 class SelectedScene : public Nacy::Scene
 {
 public:
-	SelectedScene() : Nacy::Scene(4), scale(100.0f), isScale(false)
+	SelectedScene() : Nacy::Scene(4), scale(100.0f), isScale(false), current(-1)
 	{
 		this->animator = new Utility::Animator(1.0f,Utility::Easing::Linear,100.0f,107.0f);
 		this->animator->ChangeDirection(Utility::Direction::BACK);
 	}
 	void Init() override
 	{
+		this->Clear();
 		auto sheet = new Nacy::GameObject("Sheet");
-		auto transform = sheet->GetComponent<Nacy::TransformComponent>();
-		auto texture = Nacy::ResourceManager::GetTexture2D("logo");
-		transform->position.x = -20.0f;
-		transform->position.y = 300.0f;
-		transform->size.x = 600.0f;
-		transform->size.y = 100.0f;
-		transform->scale = scale / 100.0f;
-		sheet->AddComponent(new Nacy::SpriteComponent(texture, Nacy::RGBA(255.0f), Nacy::SpriteType::ROUND, 10.0f));
-
+		auto sheetTransform = sheet->GetComponent<Nacy::TransformComponent>();
+		auto sheetTexture = Nacy::ResourceManager::GetTexture2D("logo");
+		sheetTransform->position.x = -20.0f;
+		sheetTransform->position.y = 300.0f;
+		sheetTransform->size.x = 400.0f;
+		sheetTransform->size.y = 66.6f;
+		sheetTransform->scale = scale / 100.0f;
+		sheet->AddComponent(new Nacy::SpriteComponent(sheetTexture, Nacy::RGBA(255.0f), Nacy::SpriteType::ROUND, 10.0f));
 		this->AddGameObject("Sheet", sheet);
+
+		auto setting = new Nacy::GameObject("Setting");
+		auto settingTransform = setting->GetComponent<Nacy::TransformComponent>();
+		auto settingTexture = Nacy::ResourceManager::GetTexture2D("setting");
+		settingTransform->position.x = 20.0f;
+		settingTransform->position.y = 10.0f;
+		settingTransform->size.x = 40.0f;
+		settingTransform->size.y = 40.0f;
+		setting->AddComponent(new Nacy::SpriteComponent(settingTexture, Nacy::RGBA(255.0f)));
+		this->AddGameObject("Setting", setting);
 	}
 	void DrawBackground() override
 	{
-		this->graphic->shape->DrawRect(0, 0, this->screenWidth, this->screenHeight, Nacy::RGBA(92.0f,92.0f,92.0f,255.0f), 1.0f);
+		auto texture = Nacy::ResourceManager::GetTexture2D("music_background");
+		if (current == 0)
+		{
+			this->graphic->sprite->DrawSprite(texture, 0, 0, this->screenWidth, this->screenHeight, Nacy::RGBA(255.0f));
+			this->graphic->shape->DrawRect(0, 0, this->screenWidth, this->screenHeight, Nacy::RGBA(0.0f, 0.0f, 0.0f, 200.0f), 1.0f);
+		}
+		
+		
+		this->graphic->shape->DrawRect(0, 0, 80, 80, Nacy::RGBA(0.0f, 0.0f, 0.0f, 150.0f), 1.0f);
+		this->graphic->text->GetFont("comici_20").RenderCenterdText("Setting", 40.0f, 55.0f, 1.0f, Nacy::RGBA(255.0f));
 	}
 
 	void Update(double delta) override
@@ -58,15 +77,26 @@ public:
 	}
 	void OnMouseButton(int button) override
 	{
-		auto transform = this->GetGameObject("Sheet")->GetComponent<Nacy::TransformComponent>();
+		auto sheetTransform = this->GetGameObject("Sheet")->GetComponent<Nacy::TransformComponent>();
+		auto settingTransform = this->GetGameObject("Setting")->GetComponent<Nacy::TransformComponent>();
 		auto mouseX = Nacy::InputManager::mouseX;
 		auto mouseY = Nacy::InputManager::mouseY;
-		if (this->isHovered(transform, mouseX,mouseY) && button == Nacy::LEFT_BUTTON)
+		if (button == Nacy::LEFT_BUTTON)
 		{
-			Nacy::SceneManager::GetInstance()->DisplayScene(new GameScene);
+			if (this->isHovered(sheetTransform, mouseX, mouseY))
+			{
+				this->current = 0;
+
+			}
+			else if (this->isHovered(settingTransform, mouseX, mouseY))
+			{
+				Nacy::SceneManager::GetInstance()->DisplayScene(new SettingScene);
+			}
 		}
+
 	}
 private:
+	int current;
 	bool playHover = false;
 	bool isScale;
 	float scale;

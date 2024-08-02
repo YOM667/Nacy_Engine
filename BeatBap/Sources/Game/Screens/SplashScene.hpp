@@ -16,11 +16,12 @@ public:
 	}
 	void Init()
 	{
+		this->Clear();
 		//======Logo======
 		auto logo = new Nacy::GameObject("Logo");
 
 		logo->GetComponent<Nacy::TransformComponent>()->position.x = (this->screenWidth - 256) / 2.0f;
-		logo->GetComponent<Nacy::TransformComponent>()->position.y = 200.0f;
+		logo->GetComponent<Nacy::TransformComponent>()->position.y = this->screenHeight / 2.0f - 150;
 		logo->GetComponent<Nacy::TransformComponent>()->size.x = 256.0f;
 		logo->GetComponent<Nacy::TransformComponent>()->size.y = 256.0f;
 
@@ -31,7 +32,7 @@ public:
 		auto text = new Nacy::GameObject("Text");
 
 		text->GetComponent<Nacy::TransformComponent>()->position.x = this->screenWidth / 2.0f;
-		text->GetComponent<Nacy::TransformComponent>()->position.y = 480;
+		text->GetComponent<Nacy::TransformComponent>()->position.y = this->screenHeight / 2.0f + 150;
 
 		text->AddComponent(new Nacy::TextLableComponent("Made by Nacy", "comici", Nacy::RGBA(255.0f, 142.8f, 137.0f, alpha)));
 
