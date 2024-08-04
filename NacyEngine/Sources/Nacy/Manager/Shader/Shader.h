@@ -1,9 +1,10 @@
 #pragma once
+
 #include "Nacy/Core/Core.h"
-namespace Shaders
-{
-    static const char* shape_vertex =
-    R"(
+
+namespace Shaders {
+    static const char *shape_vertex =
+            R"(
     #version 330 core
     layout (location = 0) in vec3 vertex;
     
@@ -16,8 +17,8 @@ namespace Shaders
     }
     
     )";
-    static const char* texture_vertex =
-    R"(
+    static const char *texture_vertex =
+            R"(
     #version 330 core
     layout (location = 0) in vec3 vertex;
     
@@ -33,8 +34,8 @@ namespace Shaders
         gl_Position = projection * transform * vec4(vertex, 1.0f);
     }
     )";
-    static const char* text_fragment =
-    R"(
+    static const char *text_fragment =
+            R"(
     #version 330 core
     
     in vec2 TexCoords;
@@ -48,8 +49,8 @@ namespace Shaders
         FragColor = textColor * alphaSampler;
     }
     )";
-    static const char* texture_fragment =
-    R"(
+    static const char *texture_fragment =
+            R"(
     #version 330 core
     
     in vec2 TexCoords;
@@ -99,8 +100,8 @@ namespace Shaders
     
     }
     )";
-    static const char* rect_fragment =
-    R"(
+    static const char *rect_fragment =
+            R"(
     #version 330 core
     out vec4 FragColor;
     
@@ -111,8 +112,8 @@ namespace Shaders
         FragColor = rectColor;
     }
     )";
-    static const char* roundrect_texture_fragment =
-        R"(
+    static const char *roundrect_texture_fragment =
+            R"(
     #version 330 core
     
     uniform vec2 size;
@@ -139,8 +140,8 @@ namespace Shaders
     	FragColor = col;
     }
     )";
-    static const char* roundrect_outline_fragment =
-    R"(
+    static const char *roundrect_outline_fragment =
+            R"(
     #version 330 core
     
     uniform vec2 size;
@@ -168,8 +169,8 @@ namespace Shaders
         FragColor = mix(outlineColor, internalColor, blendAmount);
     }
     )";
-    static const char* roundrect_fragment =
-    R"(
+    static const char *roundrect_fragment =
+            R"(
     #version 330 core
 
     uniform vec2 size;
@@ -191,32 +192,48 @@ namespace Shaders
     }
     )";
 }
-namespace Nacy
-{
-    
-    class NACY_API Shader
-    {
+namespace Nacy {
+
+    class NACY_API Shader {
     public:
         uint32_t ID;
-        Shader();
-        void Use() const;
-        Shader& UseShader();
-        void LoadFileAndCompile(const char* vertexPath, const char* fragmentPath);
-        void Compile(const char* vertexCode, const char* fragmentCode);
-        void AttachShader(unsigned int vertex, unsigned int fragment);
-        unsigned int CreateShader(const char* shaderCode, const char* shaderType);
 
-        void SetInt(const char* name, int num) const;
-        void SetFloat(const char* name, float num) const;
-        void SetDouble(const char* name, double num) const;
-        void SetBool(const char* name, bool value) const;
-        void SetVector1F(const char* name, const glm::vec1& vec) const;
-        void SetVector2F(const char* name, const glm::vec2& vec) const;
-        void SetVector3F(const char* name, const glm::vec3& vec) const;
-        void SetVector4F(const char* name, const glm::vec4& vec) const;
-        void SetMatrix2F(const char* name, const glm::mat2& mat) const;
-        void SetMatrix3F(const char* name, const glm::mat3& mat) const;
-        void SetMatrix4F(const char* name, const glm::mat4& mat) const;
+        Shader();
+
+        void Use() const;
+
+        Shader &UseShader();
+
+        void LoadFileAndCompile(const char *vertexPath, const char *fragmentPath);
+
+        void Compile(const char *vertexCode, const char *fragmentCode);
+
+        void AttachShader(unsigned int vertex, unsigned int fragment);
+
+        unsigned int CreateShader(const char *shaderCode, const char *shaderType);
+
+        void SetInt(const char *name, int num) const;
+
+        void SetFloat(const char *name, float num) const;
+
+        void SetDouble(const char *name, double num) const;
+
+        void SetBool(const char *name, bool value) const;
+
+        void SetVector1F(const char *name, const glm::vec1 &vec) const;
+
+        void SetVector2F(const char *name, const glm::vec2 &vec) const;
+
+        void SetVector3F(const char *name, const glm::vec3 &vec) const;
+
+        void SetVector4F(const char *name, const glm::vec4 &vec) const;
+
+        void SetMatrix2F(const char *name, const glm::mat2 &mat) const;
+
+        void SetMatrix3F(const char *name, const glm::mat3 &mat) const;
+
+        void SetMatrix4F(const char *name, const glm::mat4 &mat) const;
+
     private:
         static void checkCompileErrors(uint32_t shader, std::string type);
     };

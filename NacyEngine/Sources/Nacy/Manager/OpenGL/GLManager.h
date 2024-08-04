@@ -285,10 +285,10 @@ const uint32_t NACY_GL_MAP1_VERTEX_4 = 0x0D98;
 const uint32_t NACY_GL_MAP2_COLOR_4 = 0x0DB0;
 const uint32_t NACY_GL_MAP2_INDEX = 0x0DB1;
 const uint32_t NACY_GL_MAP2_NORMAL = 0x0DB2;
-const uint32_t NACY_GL_MAP2_TEXTURE_COORD_1 = 0x0DB3  ;
-const uint32_t NACY_GL_MAP2_TEXTURE_COORD_2 = 0x0DB4  ;
-const uint32_t NACY_GL_MAP2_TEXTURE_COORD_3 = 0x0DB5  ;
-const uint32_t NACY_GL_MAP2_TEXTURE_COORD_4 = 0x0DB6  ;
+const uint32_t NACY_GL_MAP2_TEXTURE_COORD_1 = 0x0DB3;
+const uint32_t NACY_GL_MAP2_TEXTURE_COORD_2 = 0x0DB4;
+const uint32_t NACY_GL_MAP2_TEXTURE_COORD_3 = 0x0DB5;
+const uint32_t NACY_GL_MAP2_TEXTURE_COORD_4 = 0x0DB6;
 const uint32_t NACY_GL_MAP2_VERTEX_3 = 0x0DB7;
 const uint32_t NACY_GL_MAP2_VERTEX_4 = 0x0DB8;
 const uint32_t NACY_GL_MAP1_GRID_DOMAIN = 0x0DD0;
@@ -297,16 +297,16 @@ const uint32_t NACY_GL_MAP2_GRID_DOMAIN = 0x0DD2;
 const uint32_t NACY_GL_MAP2_GRID_SEGMENTS = 0x0DD3;
 const uint32_t NACY_GL_TEXTURE_1D = 0x0DE0;
 const uint32_t NACY_GL_TEXTURE_2D = 0x0DE1;
-const uint32_t NACY_GL_FEEDBACK_BUFFER_POINTER = 0x0DF0  ;
-const uint32_t NACY_GL_FEEDBACK_BUFFER_SIZE = 0x0DF1  ;
-const uint32_t NACY_GL_FEEDBACK_BUFFER_TYPE = 0x0DF2  ;
-const uint32_t NACY_GL_SELECTION_BUFFER_POINTER = 0x0DF3  ;
-const uint32_t NACY_GL_SELECTION_BUFFER_SIZE = 0x0DF4  ;
+const uint32_t NACY_GL_FEEDBACK_BUFFER_POINTER = 0x0DF0;
+const uint32_t NACY_GL_FEEDBACK_BUFFER_SIZE = 0x0DF1;
+const uint32_t NACY_GL_FEEDBACK_BUFFER_TYPE = 0x0DF2;
+const uint32_t NACY_GL_SELECTION_BUFFER_POINTER = 0x0DF3;
+const uint32_t NACY_GL_SELECTION_BUFFER_SIZE = 0x0DF4;
 const uint32_t NACY_GL_TEXTURE_WIDTH = 0x1000;
 const uint32_t NACY_GL_TRANSFORM_BIT = 0x00001000;
 const uint32_t NACY_GL_TEXTURE_HEIGHT = 0x1001;
-const uint32_t NACY_GL_TEXTURE_INTERNAL_FORMAT = 0x1003  ;
-const uint32_t NACY_GL_TEXTURE_BORDER_COLOR = 0x1004  ;
+const uint32_t NACY_GL_TEXTURE_INTERNAL_FORMAT = 0x1003;
+const uint32_t NACY_GL_TEXTURE_BORDER_COLOR = 0x1004;
 const uint32_t NACY_GL_TEXTURE_BORDER = 0x1005;
 const uint32_t NACY_GL_DONT_CARE = 0x1100;
 const uint32_t NACY_GL_FASTEST = 0x1101;
@@ -318,11 +318,11 @@ const uint32_t NACY_GL_POSITION = 0x1203;
 const uint32_t NACY_GL_SPOT_DIRECTION = 0x1204;
 const uint32_t NACY_GL_SPOT_EXPONENT = 0x1205;
 const uint32_t NACY_GL_SPOT_CUTOFF = 0x1206;
-const uint32_t NACY_GL_CONSTANT_ATTENUATION = 0x1207  ;
+const uint32_t NACY_GL_CONSTANT_ATTENUATION = 0x1207;
 const uint32_t NACY_GL_LINEAR_ATTENUATION = 0x1208;
-const uint32_t NACY_GL_QUADRATIC_ATTENUATION = 0x1209  ;
+const uint32_t NACY_GL_QUADRATIC_ATTENUATION = 0x1209;
 const uint32_t NACY_GL_COMPILE = 0x1300;
-const uint32_t NACY_GL_COMPILE_AND_EXECUTE = 0x1301  ;
+const uint32_t NACY_GL_COMPILE_AND_EXECUTE = 0x1301;
 const uint32_t NACY_GL_BYTE = 0x1400;
 const uint32_t NACY_GL_UNSIGNED_BYTE = 0x1401;
 const uint32_t NACY_GL_SHORT = 0x1402;
@@ -352,7 +352,7 @@ const uint32_t NACY_GL_NAND = 0x150E;
 const uint32_t NACY_GL_SET = 0x150F;
 const uint32_t NACY_GL_EMISSION = 0x1600;
 const uint32_t NACY_GL_SHININESS = 0x1601;
-const uint32_t NACY_GL_AMBIENT_AND_DIFFUSE = 0x1602  ;
+const uint32_t NACY_GL_AMBIENT_AND_DIFFUSE = 0x1602;
 const uint32_t NACY_GL_COLOR_INDEXES = 0x1603;
 const uint32_t NACY_GL_MODELVIEW = 0x1700;
 const uint32_t NACY_GL_PROJECTION = 0x1701;
@@ -424,8 +424,8 @@ const uint32_t NACY_GL_V2F = 0x2A20;
 const uint32_t NACY_GL_V3F = 0x2A21;
 const uint32_t NACY_GL_C4UB_V2F = 0x2A22;
 const uint32_t NACY_GL_C4UB_V3F = 0x2A23;
-const uint32_t NACY_GL_C3F_V3F = 0x2A24 ;
-const uint32_t NACY_GL_N3F_V3F = 0x2A25 ;
+const uint32_t NACY_GL_C3F_V3F = 0x2A24;
+const uint32_t NACY_GL_N3F_V3F = 0x2A25;
 const uint32_t NACY_GL_C4F_N3F_V3F = 0x2A26;
 const uint32_t NACY_GL_T2F_V3F = 0x2A27;
 const uint32_t NACY_GL_T4F_V4F = 0x2A28;
@@ -535,27 +535,31 @@ const uint32_t NACY_GL_SCISSOR_BIT = 0x00080000;
 const uint32_t NACY_GL_ALL_ATTRIB_BITS = 0x000fffff;
 const uint32_t NACY_GL_CLIENT_ALL_ATTRIB_BITS = 0xffffffff;
 
-namespace GL
-{
-	class GLManager
-	{
-		using GLOperationFunc = std::function<void()>;
-	public:
-		static void GLEnable(uint32_t operation);
-		static void GLDisable(uint32_t operation);
+namespace GL {
+    class GLManager {
+        using GLOperationFunc = std::function<void()>;
+    public:
+        static void GLEnable(uint32_t operation);
 
-		static void Start(uint32_t operation, GLOperationFunc func);
-		static void StartBlend(uint32_t sfactor, uint32_t dfactor, GLOperationFunc func);
+        static void GLDisable(uint32_t operation);
 
-		static void Blend();
-		static void DisableBlend();
-		static void BlendFunc(uint32_t sfactor, uint32_t dfactor);
+        static void Start(uint32_t operation, GLOperationFunc func);
 
-		static void CullFace();
-		static void StartCullFace(GLOperationFunc func);
-		static void DisableCullFace();
+        static void StartBlend(uint32_t sfactor, uint32_t dfactor, GLOperationFunc func);
 
-	};
+        static void Blend();
+
+        static void DisableBlend();
+
+        static void BlendFunc(uint32_t sfactor, uint32_t dfactor);
+
+        static void CullFace();
+
+        static void StartCullFace(GLOperationFunc func);
+
+        static void DisableCullFace();
+
+    };
 }
 
 

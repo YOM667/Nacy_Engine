@@ -16,20 +16,19 @@
 #define Fatal(message, ...) Utility::Logger::Instance()->Log(Utility::LogType::LEVEL_FATAL,__FILE__,__LINE__, message, ##__VA_ARGS__)
 
 
-namespace Utility
-{
-    enum class LogType
-    {
-        LEVEL_DEBUG = 0, LEVEL_INFO, LEVEL_WARN, LEVEL_ERROR,LEVEL_FATAL
+namespace Utility {
+    enum class LogType {
+        LEVEL_DEBUG = 0, LEVEL_INFO, LEVEL_WARN, LEVEL_ERROR, LEVEL_FATAL
     };
-	class Logger
-	{
+
+    class Logger {
     public:
 
         NACY_API Logger();
+
         NACY_API ~Logger();
         //THE FUNCTION CAN GET A LOGGER INSTANCE JUST ONLY HAVE ONE LOGGER INSTANCE
-        NACY_API static Logger* Instance();
+        NACY_API static Logger *Instance();
         //Open log file
         //if not exist, the function will create a new file
         NACY_API void Open();
@@ -40,18 +39,19 @@ namespace Utility
         //@pragam file    : need a __LINE__ marco, it can replace to 'invoke line' in some files
         //@pragam message : the message you want to output in consoles and log file
         //...     : this is a variable arguments that can format output message such as printf("%s",str)
-        NACY_API void Log(LogType level, const char* file, int line, const char* message, ...);
+        NACY_API void Log(LogType level, const char *file, int line, const char *message, ...);
+
     private:
         //the logger output log file path
         std::string localFile;
         //output stream, to write log
         std::ofstream outStream;
         //levels string and enum shift
-        static const char* levels[5];
+        static const char *levels[5];
         //log Instance
-        static Logger* logInstance;
+        static Logger *logInstance;
 
-	};
+    };
 }
 
 

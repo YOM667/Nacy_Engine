@@ -16,7 +16,6 @@
 #include "Nacy/Manager/Shader/Shader.h"
 #include "Nacy/Manager/Scene/SceneManager.h"
 #include "Nacy/Manager/Scene/Scene.h"
-#include "Nacy/Manager/Carema/Camera.h"
 #include "Nacy/Manager/Input/InputManager.h"
 #include "Nacy/Manager/OpenGL/GLManager.h"
 
@@ -27,7 +26,7 @@
 #include "Nacy/Object/Components/Game/SpriteComponent.hpp"
 #include "Nacy/Object/Components/Game/TransformComponent.hpp"
 #include "Nacy/Object/Components/Interface/ShapeComponent.hpp"
-#include "Nacy/Object/Components/Interface/TextLableComponent.hpp"
+#include "Nacy/Object/Components/Interface/TextLabelComponent.hpp"
 #include "Nacy/Object/Components/Game/DelayComponent.hpp"
 
 #include "Nacy/Render/Graphic.hpp"

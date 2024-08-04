@@ -1,35 +1,42 @@
 #pragma once
+
 #include "Nacy/Core/Core.h"
 #include "Scene.h"
-namespace Nacy
-{
-	class SceneManager
-	{
-	private:
-		SceneManager();
-		SceneManager(const SceneManager& signal) = delete;
-		const SceneManager& operator=(const SceneManager& signal) = delete;
 
-		static SceneManager* instance;
-	public:
+namespace Nacy {
+    class SceneManager {
+    private:
+        SceneManager();
 
-		NACY_API void Render(double delta);
-		NACY_API void Update(double delta);
-		NACY_API void Resize(int width, int height);
-		NACY_API void SetWindowSize(const Vector2& size);
+        SceneManager(const SceneManager &signal) = delete;
 
-		NACY_API static SceneManager* GetInstance();
-		
-		NACY_API void DisplayScene(Scene* scene);
+        const SceneManager &operator=(const SceneManager &signal) = delete;
 
-		NACY_API int GetCurrentSceneID();
-		NACY_API Scene* GetCurrentScene();
-		NACY_API Graphic* GetGraphic();
+        static SceneManager *instance;
+    public:
 
-	private:
+        NACY_API void Render(double delta);
 
-		Vector2 size;
-		Graphic* graphic;
-		Scene* scene;
-	};
+        NACY_API void Update(double delta);
+
+        NACY_API void Resize(const Vector2 &size);
+
+        NACY_API void SetWindowSize(const Vector2 &size);
+
+        NACY_API static SceneManager *GetInstance();
+
+        NACY_API void DisplayScene(Scene *scene);
+
+        NACY_API int GetCurrentSceneID();
+
+        NACY_API Scene *GetCurrentScene();
+
+        NACY_API Graphic *GetGraphic();
+
+    private:
+
+        Vector2 size;
+        Graphic *graphic;
+        Scene *scene;
+    };
 }

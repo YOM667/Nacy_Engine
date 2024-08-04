@@ -1,29 +1,30 @@
 #pragma once
 
 #include "Nacy/Core/Core.h"
-namespace Nacy
-{
+
+namespace Nacy {
     // Texture2D is able to store and configure a texture in OpenGL.
     // It also hosts utility functions for easy management.
-    class NACY_API Texture2D
-    {
+    class NACY_API Texture2D {
     public:
         // Holds the ID of the texture object, used for all texture operations to reference to this particlar texture
-        GLuint id;
+        uint32_t id;
         // Texture image dimensions
-        GLuint width, height; // Width and height of loaded image in pixels
+        uint32_t width, height; // Width and height of loaded image in pixels
         // Texture Format
-        GLuint internalFormat; // Format of texture object
-        GLuint imageFormat; // Format of loaded image
+        uint32_t internalFormat; // Format of texture object
+        uint32_t imageFormat; // Format of loaded image
         // Texture configuration
-        GLuint wrapS; // Wrapping mode on S axis
-        GLuint wrapT; // Wrapping mode on T axis
-        GLuint filterMin; // Filtering mode if texture pixels < screen pixels
-        GLuint filterMax; // Filtering mode if texture pixels > screen pixels
+        uint32_t wrapS; // Wrapping mode on S axis
+        uint32_t wrapT; // Wrapping mode on T axis
+        uint32_t filterMin; // Filtering mode if texture pixels < screen pixels
+        uint32_t filterMax; // Filtering mode if texture pixels > screen pixels
         // Constructor (sets default texture modes)
         Texture2D();
+
         // Generates texture from image data
-        void Generate(GLuint width, GLuint height, unsigned char* data);
+        void Generate(uint32_t width, uint32_t height, unsigned char *data);
+
         // Binds the texture as the current active GL_TEXTURE_2D texture object
         void Bind() const;
     };

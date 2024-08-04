@@ -1,41 +1,45 @@
 #pragma once
+
+#include <utility>
+
 #include "Nacy/Core/Core.h"
 
-namespace Nacy
-{
-	const int LEFT_BUTTON = GLFW_MOUSE_BUTTON_1;
-	const int RIGHT_BUTTON = GLFW_MOUSE_BUTTON_2;
+namespace Nacy {
+    const int LEFT_BUTTON = GLFW_MOUSE_BUTTON_1;
+    const int RIGHT_BUTTON = GLFW_MOUSE_BUTTON_2;
 
-	enum class NACY_API KeyConflit
-	{
-		IN_SCENE, IN_GAME, IN_ANYTHING
-	};
-	enum class NACY_API KeyActionType
-	{
-		KEY_PRESSED, KEY_RELESED
-	};
-	struct KeyBinding
-	{
-		using KeyActionFunc = std::function<void(KeyActionType)>;
+    enum class NACY_API KeyConflit {
+        IN_SCENE, IN_GAME, IN_ANYTHING
+    };
+    enum class NACY_API KeyActionType {
+        KEY_PRESSED, KEY_RELESED
+    };
 
-		int keyCode;
-		KeyConflit conflit;
-		KeyActionFunc func;
-		NACY_API KeyBinding() : keyCode(-1), conflit(KeyConflit::IN_ANYTHING), func(nullptr) {}
-		NACY_API KeyBinding(const KeyActionFunc& func) : keyCode(-1), conflit(KeyConflit::IN_ANYTHING), func(func) {}
-		NACY_API KeyBinding(int keyCode,const KeyConflit& conflit, const KeyActionFunc& func)
-			: keyCode(keyCode), conflit(conflit), func(func){}
-	};
-	class InputManager
-	{
-	private:
-		static std::map<const char*, KeyBinding> keybindingMap;
-	public:
-		NACY_API static float mouseX, mouseY;
-		NACY_API static void RegisterKeyBinding(const char* name, const KeyBinding& keyBinding);
-		NACY_API static void KeyAction(int keyCode, const KeyActionType& type);
+    struct KeyBinding {
+        using KeyActionFunc = std::function<void(KeyActionType)>;
+
+        int keyCode;
+        KeyConflit conflit;
+        KeyActionFunc func;
+
+        NACY_API KeyBinding();
+
+        NACY_API explicit KeyBinding(const KeyActionFunc &func);
+
+        NACY_API KeyBinding(int keyCode, const KeyConflit &keyConflit, const KeyActionFunc &func);
+    };
+
+    class InputManager {
+    private:
+        static std::map<const char *, KeyBinding> keybindingMap;
+    public:
+        NACY_API static float mouseX, mouseY;
+
+        NACY_API static void RegisterKeyBinding(const char *name, const KeyBinding &keyBinding);
+
+        NACY_API static void KeyAction(int keyCode, const KeyActionType &type);
 
 
-	};
+    };
 }
 
