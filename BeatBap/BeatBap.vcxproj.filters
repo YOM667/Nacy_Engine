@@ -18,45 +18,42 @@
     <ClCompile Include="Sources\main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Game\Screens\GameScene.hpp">
-      <Filter>头文件</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\Game\BeatBap.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Sources\SoundEngine\SoundEngine.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Game\Loader\SheetManager.cpp">
+    <ClCompile Include="Sources\Game\Entities\Player.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sources\Game\Screens\MenuScene.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\Game\BeatBap.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Game\Renderer\BGRenderer.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Game\Screens\SelectedScene.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Game\Screens\Objects\Objects.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Sources\SoundEngine\SoundEngine.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Game\Screens\SplashScene.hpp">
+    <ClInclude Include="Sources\Game\Screens\SplashScene.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Game\Loader\SheetManager.h">
+    <ClInclude Include="Sources\Util.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Game\Screens\SettingScene.hpp">
+    <ClInclude Include="Sources\Game\Entities\Player.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Game\Screens\MainMenuScene.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Game\Screens\GameScene.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Game\System\MineSweepSystem.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Game\Screens\GameOverScene.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -78,18 +75,9 @@
     <None Include="Resources\Shaders\background.vs">
       <Filter>资源文件</Filter>
     </None>
-    <None Include="Resources\Sheets\Engine x Start.json">
-      <Filter>资源文件</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="NacyRes\nacy.png">
-      <Filter>资源文件</Filter>
-    </Image>
-    <Image Include="Resources\Textures\Engine x Start!!.png">
-      <Filter>资源文件</Filter>
-    </Image>
-    <Image Include="Resources\Textures\click.png">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>

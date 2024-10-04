@@ -7,13 +7,7 @@ namespace Nacy {
 
     SceneManager::SceneManager()
             : scene(nullptr) {
-        auto shape = new ShapeRenderer();
-
-        auto text = new FontRenderer();
-
-        auto sprite = new SpriteRenderer();
-
-        this->graphic = new Graphic(sprite, shape, text);
+        Graphic::Init();
     }
 
     void SceneManager::Render(double delta) {
@@ -21,20 +15,19 @@ namespace Nacy {
     }
 
     void SceneManager::Update(double delta) {
+        this->scene->UpdateMouse();
         this->scene->Update(delta);
     }
 
     void SceneManager::Resize(const Vector2 &size) {
         this->SetWindowSize(size);
-
         this->scene->Init();
-
     }
 
     void SceneManager::SetWindowSize(const Vector2 &size) {
         this->size = size;
-        this->graphic->shape->UpdateWindowSize(size);
-        this->graphic->sprite->UpdateWindowSize(size);
+        Graphic::UpdateWindowSize(size);
+    
         if (scene != nullptr) {
             this->scene->SetWindowSize(this->size.x, this->size.y);
         }
@@ -57,8 +50,8 @@ namespace Nacy {
         this->scene = nullptr;
         if (newScene != nullptr) {
             this->scene = newScene;
-            this->scene->SetGraphic(this->graphic);
             this->scene->SetWindowSize(this->size.x, this->size.y);
+            this->scene->PreInit();
             this->scene->Init();
         }
 
@@ -70,10 +63,6 @@ namespace Nacy {
 
     Scene *SceneManager::GetCurrentScene() {
         return this->scene;
-    }
-
-    Graphic *SceneManager::GetGraphic() {
-        return this->graphic;
     }
 }
 

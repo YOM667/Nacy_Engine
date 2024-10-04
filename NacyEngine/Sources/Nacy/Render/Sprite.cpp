@@ -18,7 +18,7 @@ namespace Nacy {
     }
 
     void
-    SpriteRenderer::DrawSprite(Texture2D &texture,const Vector2 &position, const Vector2 &size, const RGBA &color) {
+    SpriteRenderer::DrawSprite(const Texture2D &texture,const Vector2 &position, const Vector2 &size, const RGBA &color) {
         glm::mat4 transform(1.0f);
         this->spriteRenderer->GetShader().Use();
         transform = glm::translate(transform, glm::vec3(position.x, position.y, 0.0f));
@@ -40,7 +40,7 @@ namespace Nacy {
     }
 
     void
-    SpriteRenderer::DrawRoundedSprite(Texture2D &texture,const Vector2 &position, const Vector2 &size, float radius,
+    SpriteRenderer::DrawRoundedSprite(const Texture2D &texture,const Vector2 &position, const Vector2 &size, float radius,
                                       float scale, const RGBA &color) {
         glm::mat4 transform(1.0f);
         this->spriteRoundRenderer->GetShader().Use();

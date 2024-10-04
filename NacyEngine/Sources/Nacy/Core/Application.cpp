@@ -56,7 +56,8 @@ namespace Nacy {
 
         Info("Loading engine ttf font");
         ResourceManager::LoadFont("NacyRes/Comici.ttf", 64, "comici");
-        ResourceManager::LoadFont("NacyRes/Comici.ttf", 20, "comici_20");
+        ResourceManager::LoadFont("NacyRes/Comici.ttf", 42, "comici_small");
+        ResourceManager::LoadFont("NacyRes/Comici.ttf", 32, "comici_smallA");
         Info("Set engine event handlers");
         this->window->setEventCallback(BIND_EVENT_FN(OnEvent));
 
@@ -74,20 +75,11 @@ namespace Nacy {
 
     bool Application::OnKeyPressed(KeyPressedEvent &event) {
         InputManager::KeyAction(event.GetKeyCode(), KeyActionType::KEY_PRESSED);
-        //if (SceneManager::GetInstance()->GetCurrentSceneID() != -1)
-        //{
-        //	SceneManager::GetInstance()->GetCurrentScene()->KeyPressed(event.GetKeyCode());
-        //}
-
         return true;
     }
 
     bool Application::OnKeyReleased(KeyReleasedEvent &event) {
         InputManager::KeyAction(event.GetKeyCode(), KeyActionType::KEY_RELESED);
-        //if (scene != nullptr)
-        //{
-        //	//SceneManager::GetInstance()->GetCurrentScene()->KeyReleased(event.GetKeyCode());
-        //}
         return true;
     }
 
@@ -107,11 +99,6 @@ namespace Nacy {
         if (lowerTopCorner != 0) {
             InputManager::mouseY = event.GetY() + lowerTopCorner;
         }
-
-        //if (scene != nullptr)
-        //{
-        //	//SceneManager::GetInstance()->GetCurrentScene()->MouseMoving(event.GetX(), event.GetY());
-        //}
         return true;
     }
 
@@ -150,7 +137,7 @@ namespace Nacy {
         running = true;
         auto deltaTime = 0.0;
         auto lastFrame = 0.0;
-        auto lastTime = Utility::GetNowTime();
+        auto lastTime = Utility::GetNanoTime();
 
         auto frameCounter = 0LL;
 
@@ -159,7 +146,7 @@ namespace Nacy {
         auto frame = 0;
         while (running) {
             auto render = false;
-            auto startTime = Utility::GetNowTime();
+            auto startTime = Utility::GetNanoTime();
             auto passedTime = startTime - lastTime;
 
             lastTime = startTime;

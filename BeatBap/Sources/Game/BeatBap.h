@@ -10,7 +10,7 @@ public:
 
     static Nacy::Application *GetApplication() {
         if (app == nullptr) {
-            app = new Nacy::Application(Nacy::WindowConfig("BeatBap", true, 1280, 720, true, true));
+            app = new Nacy::Application(Nacy::WindowConfig("BeatBap", true, 900, 600, true, false));
         }
         return app;
     }

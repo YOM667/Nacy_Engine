@@ -14,7 +14,7 @@ namespace Nacy {
 
         NACY_API virtual void Render();
 
-        NACY_API virtual void Update();
+        NACY_API virtual void Update(double delta);
 
         template<class T>
         inline T *GetComponent() {
@@ -31,10 +31,12 @@ namespace Nacy {
         NACY_API void AddComponent(Component *component);
 
         NACY_API void SetVisible(bool visible);
-
+        NACY_API void SetDelayTime(long long delayTime);
+        NACY_API long long GetDelayTime();
     private:
         std::vector<Component *> components;
         std::string name;
+        long long delayTime;
         bool visiable;
     };
 }

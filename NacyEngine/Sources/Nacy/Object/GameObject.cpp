@@ -5,7 +5,7 @@
 
 namespace Nacy {
     GameObject::GameObject(std::string name)
-            : name(name), visiable(true) {
+            : name(name), visiable(true), delayTime(0) {
         this->AddComponent(new TransformComponent());
     }
 
@@ -24,12 +24,17 @@ namespace Nacy {
     void GameObject::SetVisible(bool visible = true) {
         this->visiable = visible;
     }
-
+    void GameObject::SetDelayTime(long long delayTime) {
+        this->delayTime = delayTime;
+    }
+    long long GameObject::GetDelayTime() {
+        return this->delayTime;
+    }
     void GameObject::Render() {
 
     }
 
-    void GameObject::Update() {
+    void GameObject::Update(double delta) {
 
     }
 }

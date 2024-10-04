@@ -1,19 +1,20 @@
 #include "pch.h"
 #include "Scene.h"
-
+#include "Nacy/Util/Utilities.h"
 #include "Nacy/Object/Components/Game/SpriteComponent.hpp"
 #include "Nacy/Object/Components/Game/TransformComponent.hpp"
 #include "Nacy/Object/Components/Interface/TextLabelComponent.hpp"
 #include "Nacy/Object/Components/Interface/ShapeComponent.hpp"
-
+#include "Nacy/Manager/Input/InputManager.h"
+using namespace Utility;
 namespace Nacy {
-    static long long initTime = 0;
-
-    void Init() {}
+    
 
     Scene::Scene(int id)
-            : id(id), mouseX(0.0f), mouseY(0.0f),
-              screenWidth(0.0f), screenHeight(0.0f), graphic(nullptr) {}
+            : id(id), mouseX(0.0f), mouseY(0.0f), initTime(GetNanoTime()),
+              screenWidth(0.0f), screenHeight(0.0f), graphic(nullptr) {
+
+    }
 
     void Scene::AddGameObject(const std::string &name, GameObject *node) {
         this->objects.push_back(std::make_pair(name, node));
@@ -28,7 +29,11 @@ namespace Nacy {
         }
         return nullptr;
     }
-
+    void Scene::UpdateMouse()
+    {
+        this->mouseX = InputManager::mouseX;
+        this->mouseY = InputManager::mouseY;
+    }
     void Scene::Exit() {
         this->Clear();
     }
@@ -58,15 +63,14 @@ namespace Nacy {
     }
 
     void Scene::Render(double delta) {
-        
-
         this->DrawBackground();
         for (auto &object: this->objects) {
             auto obj = object.second;
-
-            auto shapeRender = this->graphic->shape;
-            auto spriteRender = this->graphic->sprite;
-            auto fontRender = this->graphic->text;
+            
+            if (obj->GetDelayTime() >= GetNanoTime() - this->initTime) {
+                continue;
+            }
+           
 
             auto transform = obj->GetComponent<TransformComponent>();
             auto sprite = obj->GetComponent<SpriteComponent>();
@@ -76,11 +80,11 @@ namespace Nacy {
                 switch (shape->shapeType) {
                     case ShapeType::RECTANGLE:
 
-                        shapeRender->DrawRoundedRect(transform->position,transform->size
+                        Graphic::DrawRoundedRect(transform->position,transform->size
                                                      ,shape->radius, shape->color,1.0f);
                         break;
                     case ShapeType::ROUND_RECTANGLE:
-                        shapeRender->DrawRect(transform->position,transform->size
+                        Graphic::DrawRect(transform->position,transform->size
                                               ,shape->color,1.0f);
                         break;
                     case ShapeType::CIRCLE:
@@ -92,11 +96,11 @@ namespace Nacy {
             if (sprite != nullptr) {
                 switch (sprite->spriteType) {
                     case SpriteType::NORMAL:
-                        spriteRender->DrawSprite(sprite->texture,transform->position,transform->size
+                        Graphic::DrawSprite(sprite->texture,transform->position,transform->size
                                                  ,sprite->color);
                         break;
                     case SpriteType::ROUND:
-                        spriteRender->DrawRoundedSprite(sprite->texture,
+                        Graphic::DrawRoundedSprite(sprite->texture,
                                                         transform->position,transform->size,
                                                         sprite->radius,transform->scale,sprite->color);
                 }
@@ -104,22 +108,24 @@ namespace Nacy {
             }
             if (text != nullptr) {
                 if (text->centered) {
-                    fontRender->GetFont(text->font).RenderText(text->text,
+                    Graphic::DrawTextW(text->font,text->text,
                             transform->position,
-                            1.0f,
-                            text->color
+                            text->color,
+                            1.0f
                     );
                 } else {
-                    fontRender->GetFont(text->font).RenderCenterdText(
+                    Graphic::DrawCenteredText(text->font,
                             text->text,
                             transform->position,
-                            1.0f,
-                            text->color
+                            text->color,
+                            1.0f
                     );
                 }
 
             }
         }
+    }
+    void Scene::PreInit() {
     }
 
     void Scene::Init() {
@@ -127,7 +133,14 @@ namespace Nacy {
     }
 
     void Scene::Update(double delta) {
-
+        for (auto& object : this->objects) {
+            auto range = GetNanoTime() - initTime;
+            auto time = object.second->GetDelayTime();
+            if (time >= range) {
+                continue;
+            }
+            object.second->Update(delta);
+        }
     }
 
     void Scene::DrawBackground() {
@@ -148,4 +161,6 @@ namespace Nacy {
         && mouseX <= position.x + size.x
         && mouseY <= position.y + size.y);
     }
+
+
 }

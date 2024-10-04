@@ -1,5 +1,8 @@
 #pragma once
 
+
+#define PI 3.1415926989
+
 #include <Windows.h>
 
 #include <iostream>

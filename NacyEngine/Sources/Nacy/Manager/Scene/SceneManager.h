@@ -36,7 +36,6 @@ namespace Nacy {
     private:
 
         Vector2 size;
-        Graphic *graphic;
         Scene *scene;
     };
 }

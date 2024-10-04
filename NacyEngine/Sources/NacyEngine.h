@@ -1,7 +1,5 @@
 #pragma once
 
-#define SECOND(X) X * 1000000000
-
 #include "pch.h"
 
 #include "Nacy/Core/Application.h"

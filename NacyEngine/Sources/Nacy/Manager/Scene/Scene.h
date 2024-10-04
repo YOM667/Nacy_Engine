@@ -8,7 +8,11 @@ namespace Nacy {
     class Scene {
     public:
 
+        void UpdateMouse();
+
         NACY_API explicit Scene(int id);
+
+        NACY_API virtual void PreInit();
 
         NACY_API virtual void Init();
 
@@ -44,6 +48,7 @@ namespace Nacy {
         float screenWidth, screenHeight;
         float mouseX, mouseY;
         int id;
+        long long initTime;
     private:
         std::vector<std::pair<std::string, GameObject *>> objects;
     };

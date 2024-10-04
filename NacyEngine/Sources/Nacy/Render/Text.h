@@ -42,6 +42,6 @@ namespace Nacy {
     public:
         NACY_API void Load(const char *file, float fontSize, const char *name);
 
-        NACY_API TextRenderer GetFont(const char *fontName);
+        NACY_API TextRenderer GetFont(const std::string& fontName);
     };
 }

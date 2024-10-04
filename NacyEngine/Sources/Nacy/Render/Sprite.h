@@ -20,10 +20,10 @@ namespace Nacy {
             this->windowSize = size;
         }
 
-        NACY_API void DrawSprite(Texture2D &texture, const Vector2 &position, const Vector2 &size,
+        NACY_API void DrawSprite(const Texture2D &texture, const Vector2 &position, const Vector2 &size,
                                  const RGBA &color = RGBA(255.0f, 255.0f, 255.0f, 255.0f));
 
-        NACY_API void DrawRoundedSprite(Texture2D &texture, const Vector2 &position, const Vector2 &size, float radius, float scale,
+        NACY_API void DrawRoundedSprite(const Texture2D &texture, const Vector2 &position, const Vector2 &size, float radius, float scale,
                           const RGBA &color = RGBA(255.0f, 255.0f, 255.0f, 255.0f));
 
     private:

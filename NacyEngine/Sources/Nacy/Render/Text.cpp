@@ -159,7 +159,8 @@ namespace Nacy {
         ResourceManager::LoadFont(file, fontSize, name);
     }
 
-    TextRenderer FontRenderer::GetFont(const char *fontName) {
-        return ResourceManager::GetFont(fontName);
+    TextRenderer FontRenderer::GetFont(const std::string& fontName)
+    {
+        return ResourceManager::GetFont(fontName.c_str());
     }
 }

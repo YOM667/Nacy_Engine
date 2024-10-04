@@ -150,22 +150,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\Game\Loader\SheetManager.cpp" />
+    <ClCompile Include="Sources\Game\Entities\Player.cpp" />
     <ClCompile Include="Sources\SoundEngine\SoundEngine.cpp" />
     <ClCompile Include="Sources\Game\BeatBap.cpp" />
     <ClCompile Include="Sources\main.cpp" />
-    <ClCompile Include="Sources\Game\Screens\GameScene.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sources\Game\Screens\SettingScene.hpp" />
-    <ClInclude Include="Sources\Game\Loader\SheetManager.h" />
-    <ClInclude Include="Sources\Game\Screens\SplashScene.hpp" />
+    <ClInclude Include="Sources\Game\Entities\Player.h" />
+    <ClInclude Include="Sources\Game\Screens\GameOverScene.h" />
+    <ClInclude Include="Sources\Game\Screens\GameScene.h" />
+    <ClInclude Include="Sources\Game\Screens\MainMenuScene.h" />
+    <ClInclude Include="Sources\Game\Screens\SplashScene.h" />
+    <ClInclude Include="Sources\Game\System\MineSweepSystem.h" />
     <ClInclude Include="Sources\SoundEngine\SoundEngine.h" />
-    <ClInclude Include="Sources\Game\Screens\Objects\Objects.hpp" />
-    <ClInclude Include="Sources\Game\Screens\SelectedScene.hpp" />
-    <ClInclude Include="Sources\Game\Renderer\BGRenderer.hpp" />
     <ClInclude Include="Sources\Game\BeatBap.h" />
-    <ClInclude Include="Sources\Game\Screens\MenuScene.hpp" />
+    <ClInclude Include="Sources\Util.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Fonts\CoffeeHealing-1GrKe.ttf" />
@@ -175,12 +174,9 @@
   <ItemGroup>
     <None Include="Resources\Shaders\background.fs" />
     <None Include="Resources\Shaders\background.vs" />
-    <None Include="Resources\Sheets\Engine x Start.json" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="NacyRes\nacy.png" />
-    <Image Include="Resources\Textures\click.png" />
-    <Image Include="Resources\Textures\Engine x Start!!.png" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Audio\CrossingSound - Engine x Start!! (melody mix).mp3" />

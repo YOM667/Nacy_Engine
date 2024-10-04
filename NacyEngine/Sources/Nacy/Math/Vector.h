@@ -207,7 +207,6 @@ namespace Nacy {
         float red, green, blue, alpha;
     };
 
-
 }
 
 
